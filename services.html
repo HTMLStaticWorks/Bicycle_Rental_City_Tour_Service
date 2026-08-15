@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Bikora Bicycle Rental & City Tours</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css?v=6">
+    <style>
+        .services-page { padding-top: 60px; padding-bottom: 100px; }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 36px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 20px 50px rgba(255, 94, 0, 0.2);
+        }
+
+        .service-img-thumb {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 18px;
+            margin-bottom: 24px;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-img-thumb {
+            transform: scale(1.04);
+        }
+
+        /* Parallax Section Container */
+        .parallax-section {
+            background-attachment: scroll;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Filter Button Override for Brand Palette */
+        .filter-btn-group .btn-filter {
+            border: 2px solid var(--primary-gold) !important;
+            color: var(--primary-gold) !important;
+            background: transparent !important;
+            font-weight: 700 !important;
+            padding: 10px 28px !important;
+            border-radius: 50px !important;
+            transition: var(--transition-base) !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+
+        .filter-btn-group .btn-filter.active,
+        .filter-btn-group .btn-filter:hover {
+            background: var(--primary-gold) !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 8px 25px rgba(255, 94, 0, 0.3) !important;
+        }
+    </style>
+    <style>
+        /* Forced fix for hero section badge pill */
+        .hero-1 .feature-badge-pill, 
+        .hero-2 .feature-badge-pill, 
+        .internal-hero .feature-badge-pill,
+        .feature-badge-pill {
+            color: #FF5E00 !important;
+            background-color: rgba(255, 94, 0, 0.12) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <!-- Left: Brand -->
+            <a href="index.html" class="brand-logo">
+                <i class="bi bi-bicycle text-gold me-2"></i>
+                Bikora
+            </a>
+            
+            <!-- Center: Menus -->
+            <nav class="nav-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Right: Actions -->
+            <div class="nav-right">
+                <a href="dashboard.html" class="theme-toggle" title="Dashboard">
+                    <i class="bi bi-grid-fill"></i>
+                </a>
+                <button class="theme-toggle" title="Toggle Theme">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <button class="theme-toggle rtl-toggle-btn" title="RTL Toggle">
+                    <i class="bi bi-arrow-left-right"></i>
+                </button>
+                <div class="nav-separator"></div>
+                <a href="login.html" class="btn btn-primary btn-sm rounded-pill px-4">Login</a>
+            </div>
+
+            <button id="hamburger" class="hamburger">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div id="offcanvas-backdrop" class="offcanvas-backdrop"></div>
+    <div id="offcanvas-menu" class="offcanvas-menu">
+        <button id="offcanvas-close" class="offcanvas-close" aria-label="Close Menu">
+            <i class="bi bi-x"></i>
+        </button>
+        <a href="index.html" class="brand-logo mb-5"><i class="bi bi-bicycle text-gold me-2"></i> Bikora</a>
+        
+        <div class="offcanvas-links mb-5">
+            <a href="index.html" class="offcanvas-link">Home</a>
+            <a href="home-2.html" class="offcanvas-link">Home 2</a>
+            <a href="services.html" class="offcanvas-link active">Services</a>
+            <a href="about.html" class="offcanvas-link">About</a>
+            <a href="gallery.html" class="offcanvas-link">Gallery</a>
+            <a href="pricing.html" class="offcanvas-link">Pricing</a>
+            <a href="contact.html" class="offcanvas-link">Contact</a>
+        </div>
+
+        <div class="pt-4 border-top border-secondary border-opacity-10">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-nowrap">
+                <div class="d-flex gap-4 align-items-center flex-nowrap">
+                    <a href="dashboard.html" class="theme-toggle p-2" title="Dashboard"><i class="bi bi-grid-fill"></i></a>
+                    <button class="theme-toggle p-2" title="Toggle Theme"><i class="bi bi-moon-fill"></i></button>
+                    <button class="theme-toggle p-2 rtl-toggle-btn" title="RTL Toggle"><i class="bi bi-arrow-left-right"></i></button>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-primary w-100 rounded-pill py-3 fw-bold">Login</a>
+        </div>
+    </div>
+
+    <!-- Services Header -->
+    <section class="internal-hero" style="background-image: url('assets/images/Bicycle Fleet — 12w.jpg');">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="feature-badge-pill mb-3">URBAN EXPLORATION SERVICES</span>
+                <h1 class="display-1 mb-4 text-white fw-bold">Bicycle Rentals & Guided City Tours</h1>
+                <p class="mx-auto fs-5 text-white-50 mb-5" style="max-width: 750px;">From high-performance electric bikes to small-group historical cycling tours, discover how Bikora elevates your urban adventure.</p>
+                
+                <div class="row g-4 justify-content-center mt-4">
+                    <div class="col-12 col-sm-4 col-md-4">
+                        <div class="p-4 rounded-4 shadow-sm h-100 text-center" style="background: rgba(15,23,42,0.88);">
+                            <h2 class="display-5 text-gradient-gold fw-bold mb-0">120+</h2>
+                            <small class="text-white-50 fw-bold">Fleet Bicycles</small>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4 col-md-4">
+                        <div class="p-4 rounded-4 shadow-sm h-100 text-center" style="background: rgba(15,23,42,0.88);">
+                            <h2 class="display-5 text-gradient-cyan fw-bold mb-0">15+</h2>
+                            <small class="text-white-50 fw-bold">Guided Loops</small>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4 col-md-4">
+                        <div class="p-4 rounded-4 shadow-sm h-100 text-center" style="background: rgba(15,23,42,0.88);">
+                            <h2 class="display-5 text-gradient-gold fw-bold mb-0">100%</h2>
+                            <small class="text-white-50 fw-bold">Safety Certified</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-page">
+        <div class="container">
+            <!-- Filter Bar -->
+            <div class="d-flex justify-content-center gap-3 mb-5 flex-wrap filter-btn-group">
+                <button class="btn btn-filter active magnetic-btn" onclick="filterServices('all', this)">All Services</button>
+                <button class="btn btn-filter magnetic-btn" onclick="filterServices('ebike', this)">E-Bikes</button>
+                <button class="btn btn-filter magnetic-btn" onclick="filterServices('guided', this)">Guided Tours</button>
+                <button class="btn btn-filter magnetic-btn" onclick="filterServices('gps', this)">GPS Audio Passes</button>
+                <button class="btn btn-filter magnetic-btn" onclick="filterServices('group', this)">Group & Corporate</button>
+            </div>
+
+            <div class="row g-4" id="services-grid">
+                <!-- Bike Rental Card -->
+                <div class="col-lg-6 service-item-col ebike animate-on-scroll">
+                    <div class="service-card text-center">
+                        <div class="position-relative w-100 mb-3">
+                            <img src="assets/images/Bike Rental — 8.jpg" class="service-img-thumb" alt="Bike Rental">
+                            <span class="position-absolute top-0 end-0 m-3 badge bg-primary-gold text-white rounded-pill px-3 py-2">Hourly & Daily</span>
+                        </div>
+                        <h3 class="fw-bold mb-3">City Bike & Hybrid Rental</h3>
+                        <p class="text-muted mb-4">Comfortable 7-speed hybrid bikes, city cruisers, and light road bikes equipped with puncture-proof tires, water bottle cages, and phone mounts for easy city navigation.</p>
+                        <ul class="list-unstyled mb-4 text-center d-inline-block text-start">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Free Helmet, Heavy-Duty Lock & Phone Dock</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Hourly, half-day, and full-day flexible rates</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Free mobile roadside mechanical support</li>
+                        </ul>
+                        <div class="w-100 text-center mt-auto pt-2">
+                            <a href="dashboard.html" class="btn btn-primary rounded-pill px-5 py-3 magnetic-btn fw-bold mx-auto">Book Bike Rental</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guided Tours Card -->
+                <div class="col-lg-6 service-item-col guided animate-on-scroll" style="transition-delay: 0.15s;">
+                    <div class="service-card text-center">
+                        <div class="position-relative w-100 mb-3">
+                            <img src="assets/images/City Tour Destinations — 10c.jpg" class="service-img-thumb" alt="Guided City Tours">
+                            <span class="position-absolute top-0 end-0 m-3 badge bg-dark text-white rounded-pill px-3 py-2">Daily Departure</span>
+                        </div>
+                        <h3 class="fw-bold mb-3">Guided City Cycling Tours</h3>
+                        <p class="text-muted mb-4">Led by knowledgeable local ride captains. Ride past iconic skyline landmarks, historic districts, waterfront promenades, and hidden culinary spots with live audio headsets.</p>
+                        <ul class="list-unstyled mb-4 text-center d-inline-block text-start">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Small groups (max 10 riders per captain)</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Includes refreshment stops & photo pass</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Morning, afternoon, and sunset slots</li>
+                        </ul>
+                        <div class="w-100 text-center mt-auto pt-2">
+                            <a href="pricing.html" class="btn btn-primary rounded-pill px-5 py-3 magnetic-btn fw-bold mx-auto">Explore Tour Schedules</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Self-Guided Tours Card -->
+                <div class="col-lg-6 service-item-col gps animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="service-card text-center">
+                        <div class="position-relative w-100 mb-3">
+                            <img src="assets/images/City Cycling — 10.jpg" class="service-img-thumb" alt="Self-Guided GPS Tours">
+                            <span class="position-absolute top-0 end-0 m-3 badge bg-info text-dark rounded-pill px-3 py-2">Voice GPS Pass</span>
+                        </div>
+                        <h3 class="fw-bold mb-3">Self-Guided GPS Audio Tours</h3>
+                        <p class="text-muted mb-4">Ride at your own pace! Our custom mobile app syncs with your bike's handlebars, providing turn-by-turn voice navigation, historical facts, and recommended cafe stops.</p>
+                        <ul class="list-unstyled mb-4 text-center d-inline-block text-start">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> 5 curated city loop routes</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Offline GPS map access</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Flexible start & pause times</li>
+                        </ul>
+                        <div class="w-100 text-center mt-auto pt-2">
+                            <a href="dashboard.html" class="btn btn-primary rounded-pill px-5 py-3 magnetic-btn fw-bold mx-auto">Download GPS Pass</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group & Corporate Tours Card -->
+                <div class="col-lg-6 service-item-col group animate-on-scroll" style="transition-delay: 0.45s;">
+                    <div class="service-card text-center">
+                        <div class="position-relative w-100 mb-3">
+                            <img src="assets/images/Tour Guides — 10.jpg" class="service-img-thumb" alt="Group & Corporate Tours">
+                            <span class="position-absolute top-0 end-0 m-3 badge bg-secondary text-white rounded-pill px-3 py-2">Custom Group</span>
+                        </div>
+                        <h3 class="fw-bold mb-3">Group & Corporate Custom Tours</h3>
+                        <p class="text-muted mb-4">Customized group cycling packages for corporate team building, wedding parties, family reunions, and school outings. Complete with dedicated tour guides & catering options.</p>
+                        <ul class="list-unstyled mb-4 text-center d-inline-block text-start">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Tailored routes & group sizes</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Hotel bike delivery & pickup</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Custom branded helmets & gear</li>
+                        </ul>
+                        <div class="w-100 text-center mt-auto pt-2">
+                            <a href="contact.html" class="btn btn-primary rounded-pill px-5 py-3 magnetic-btn fw-bold mx-auto">Request Group Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW SECTION 1 (SERVICES): PICKUP & DROP-OFF HUBS MAP GUIDE -->
+            <div class="my-5 py-5 rounded-4 bg-dark text-white p-4 shadow-lg border border-secondary border-opacity-25">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                        <span class="feature-badge-pill mb-3">STATION NETWORK</span>
+                        <h2 class="display-5 fw-bold mb-3">Convenient Pickup & Drop-Off Stations</h2>
+                        <p class="text-white-50 fs-5 mb-4">Pick up your bicycle at one hub and drop it off at any of our 3 city center stations seamlessly.</p>
+                        
+                        <div class="d-flex flex-column gap-3">
+                            <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-secondary bg-opacity-25">
+                                <i class="bi bi-geo-alt-fill text-gold fs-3"></i>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Central Station Hub #1</h6>
+                                    <small class="text-white-50">124 Metro Boulevard (Open 7:00 AM - 9:00 PM)</small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-secondary bg-opacity-25">
+                                <i class="bi bi-geo-alt-fill text-cyan fs-3"></i>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Waterfront Pier Hub #2</h6>
+                                    <small class="text-white-50">88 Ocean Promenade (Open 8:00 AM - 8:00 PM)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="assets/images/Bicycle Fleet — 12a.jpg" class="img-fluid rounded-4 shadow" alt="Station Pickup" style="width: 100%; height: 100%; min-height: 340px; object-fit: cover; object-position: center;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW SECTION 2 (SERVICES): CUSTOM TOUR ADD-ONS & GEAR RENTAL -->
+            <div class="my-5 py-4">
+                <div class="text-center mb-5">
+                    <span class="feature-badge-pill mb-3">ADD-ON SERVICES</span>
+                    <h2 class="display-5 fw-bold mb-3">Ride Enhancements & Gear Add-Ons</h2>
+                    <p class="text-muted fs-5">Customize your rental with optional accessories.</p>
+                </div>
+
+                <div class="row g-4 text-center align-items-stretch">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="p-4 rounded-4 bg-dark text-white h-100 border border-secondary shadow-sm d-flex flex-column justify-content-between">
+                            <div>
+                                <img src="assets/images/Adventureacc.jpg" class="rounded-3 mb-3" alt="Child Seat" style="height: 140px; width: 100%; object-fit: cover;">
+                                <h5 class="fw-bold">Child Seat Attachment</h5>
+                                <span class="text-gold fw-bold d-block mb-2">+$5 / Ride</span>
+                            </div>
+                            <small class="text-white-50">Safety padded rear child seat for kids up to 22 kg.</small>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="p-4 rounded-4 bg-dark text-white h-100 border border-secondary shadow-sm d-flex flex-column justify-content-between">
+                            <div>
+                                <img src="assets/images/Tour Guides — 10q.jpg" class="rounded-3 mb-3" alt="Action Cam" style="height: 140px; width: 100%; object-fit: cover;">
+                                <h5 class="fw-bold">GoPro 4K Cam Rental</h5>
+                                <span class="text-gold fw-bold d-block mb-2">+$15 / Ride</span>
+                            </div>
+                            <small class="text-white-50">Handlebar-mounted 4K action camera with 64GB SD card.</small>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="p-4 rounded-4 bg-dark text-white h-100 border border-secondary shadow-sm d-flex flex-column justify-content-between">
+                            <div>
+                                <img src="assets/images/Bike Rental — 8...jpg" class="rounded-3 mb-3" alt="Water Bottle" style="height: 140px; width: 100%; object-fit: cover;">
+                                <h5 class="fw-bold">Insulated Hydration Pack</h5>
+                                <span class="text-gold fw-bold d-block mb-2">+$4 / Ride</span>
+                            </div>
+                            <small class="text-white-50">Stainless steel thermal water bottle with cage bracket.</small>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="p-4 rounded-4 bg-dark text-white h-100 border border-secondary shadow-sm d-flex flex-column justify-content-between">
+                            <div>
+                                <img src="assets/images/Tour Guides — 10wq.jpg" class="rounded-3 mb-3" alt="Audio Headset" style="height: 140px; width: 100%; object-fit: cover;">
+                                <h5 class="fw-bold">Live Audio Tour Headset</h5>
+                                <span class="text-gold fw-bold d-block mb-2">Included Free</span>
+                            </div>
+                            <small class="text-white-50">Crystal clear wireless earbud for guide audio commentary.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fleet Comparison Table -->
+            <div class="mt-5 pt-4">
+                <div class="text-center mb-5">
+                    <span class="feature-badge-pill mb-3">FLEET COMPARISON & SPECS</span>
+                    <h2 class="display-5 fw-bold mb-3">Bicycle Fleet Comparison</h2>
+                    <p class="text-muted fs-5">Compare mechanical specs and rates to choose your perfect ride.</p>
+                </div>
+                <div class="table-responsive shadow-sm rounded-4 border p-2" style="background: var(--card-bg);">
+                    <table class="table align-middle text-center mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="py-3 text-start ps-4">Model</th>
+                                <th class="py-3">Gears</th>
+                                <th class="py-3">Brakes</th>
+                                <th class="py-3">Battery Range</th>
+                                <th class="py-3">Rate</th>
+                                <th class="py-3 text-center pe-4">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-start ps-4 fw-bold"><i class="bi bi-bicycle text-gold me-2"></i> City Hybrid 7-Speed</td>
+                                <td>7-Speed Shimano</td>
+                                <td>V-Brake Dual</td>
+                                <td>Pedal Powered</td>
+                                <td class="fw-bold text-gold">$12 / hr</td>
+                                <td class="text-center pe-4"><a href="dashboard.html" class="btn btn-sm btn-primary rounded-pill px-4">Book</a></td>
+                            </tr>
+                            <tr>
+                                <td class="text-start ps-4 fw-bold"><i class="bi bi-lightning-charge-fill text-warning me-2"></i> Electric E-Bike Pro</td>
+                                <td>8-Speed Electric Assist</td>
+                                <td>Hydraulic Disc</td>
+                                <td class="fw-bold text-success">50 km Range</td>
+                                <td class="fw-bold text-gold">$20 / hr</td>
+                                <td class="text-center pe-4"><a href="dashboard.html" class="btn btn-sm btn-primary rounded-pill px-4">Book</a></td>
+                            </tr>
+                            <tr>
+                                <td class="text-start ps-4 fw-bold"><i class="bi bi-speedometer2 text-info me-2"></i> Road Bike Pro Light</td>
+                                <td>18-Speed Shimano 105</td>
+                                <td>Caliper Disc</td>
+                                <td>Pedal Powered</td>
+                                <td class="fw-bold text-gold">$18 / hr</td>
+                                <td class="text-center pe-4"><a href="dashboard.html" class="btn btn-sm btn-primary rounded-pill px-4">Book</a></td>
+                            </tr>
+                            <tr>
+                                <td class="text-start ps-4 fw-bold"><i class="bi bi-people-fill text-primary me-2"></i> Tandem Beach Cruiser</td>
+                                <td>3-Speed Internal</td>
+                                <td>Coaster Brake</td>
+                                <td>Dual Rider</td>
+                                <td class="fw-bold text-gold">$18 / hr</td>
+                                <td class="text-center pe-4"><a href="dashboard.html" class="btn btn-sm btn-primary rounded-pill px-4">Book</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6 text-center text-lg-start">
+                    <a href="index.html" class="brand-logo mb-4 text-white justify-content-center justify-content-lg-start">
+                        <i class="bi bi-bicycle text-gold me-2"></i> Bikora
+                    </a>
+                    <p class="text-muted">Premium bicycle rental & guided city tour service dedicated to fun, eco-friendly urban exploration.</p>
+                    <div class="d-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+                        <a href="#" class="footer-social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-link" title="Twitter X"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="footer-social-link" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="footer-social-link" title="Strava Club"><i class="bi bi-activity"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Rental Options</h5>
+                    <ul class="footer-links">
+                        <li><a href="services.html" class="footer-link">City Hybrid Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Electric E-Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Guided City Tours</a></li>
+                        <li><a href="services.html" class="footer-link">Self-Guided GPS Maps</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-muted">Subscribe for ride tips & discount tour promo codes.</p>
+                    <div class="input-group mt-4">
+                        <input type="text" class="form-control bg-transparent border-secondary text-white" placeholder="Email Address">
+                        <button class="btn btn-primary"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center">
+                <p class="text-muted mb-0">© 2026 Bikora Bicycle Rental & City Tours. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <div id="back-to-top" class="back-to-top">
+        <i class="bi bi-bicycle"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        function filterServices(category, btnElement) {
+            const buttons = document.querySelectorAll('.filter-btn-group .btn-filter');
+            buttons.forEach(b => b.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+
+            const items = document.querySelectorAll('.service-item-col');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+

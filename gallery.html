@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Bikora Bicycle Rental & City Tours</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css?v=6">
+    <style>
+        .gallery-page {
+            padding-top: 60px;
+            padding-bottom: 100px;
+        }
+
+        /* Redesigned Horizontal Showcase Track */
+        .horizontal-gallery-track {
+            white-space: nowrap;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 10px 5px 30px 5px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .horizontal-gallery-track::-webkit-scrollbar {
+            height: 8px;
+        }
+        .horizontal-gallery-track::-webkit-scrollbar-thumb {
+            background: var(--primary-gold);
+            border-radius: 10px;
+        }
+
+        .showcase-card {
+            display: inline-block;
+            vertical-align: top;
+            white-space: normal;
+            width: 340px;
+            max-width: 85vw;
+            height: 420px;
+            scroll-snap-align: start;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+            isolation: isolate;
+            transform: translateZ(0);
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            margin-right: 24px;
+        }
+
+        .showcase-card:last-child {
+            margin-right: 0;
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(255, 94, 0, 0.25);
+        }
+
+        .showcase-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .showcase-card:hover .showcase-img {
+            transform: scale(1.12);
+        }
+
+        .showcase-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(15,23,42,0.2) 0%, rgba(15,23,42,0.85) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 28px;
+        }
+
+        /* Filter Button Override for Brand Palette */
+        .filter-btn-group .btn-filter {
+            border: 2px solid var(--primary-gold) !important;
+            color: var(--primary-gold) !important;
+            background: transparent !important;
+            font-weight: 700 !important;
+            padding: 10px 28px !important;
+            border-radius: 50px !important;
+            transition: var(--transition-base) !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+
+        .filter-btn-group .btn-filter.active,
+        .filter-btn-group .btn-filter:hover {
+            background: var(--primary-gold) !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 8px 25px rgba(255, 94, 0, 0.3) !important;
+        }
+
+        /* Grid Cards */
+        .gallery-grid-card {
+            position: relative;
+            height: 340px;
+            overflow: hidden;
+            border-radius: 24px;
+            background: var(--card-bg);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .gallery-grid-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(255, 94, 0, 0.2);
+        }
+
+        .gallery-grid-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-grid-card:hover .gallery-grid-img {
+            transform: scale(1.12);
+        }
+
+        .gallery-grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px;
+            opacity: 0;
+            transition: var(--transition-base);
+            z-index: 2;
+        }
+
+        .gallery-grid-card:hover .gallery-grid-overlay {
+            opacity: 1;
+        }
+
+        .lightbox-modal-img {
+            max-height: 80vh;
+            width: 100%;
+            object-fit: contain;
+        }
+    </style>
+    <style>
+        /* Forced fix for hero section badge pill */
+        .hero-1 .feature-badge-pill, 
+        .hero-2 .feature-badge-pill, 
+        .internal-hero .feature-badge-pill,
+        .feature-badge-pill {
+            color: #FF5E00 !important;
+            background-color: rgba(255, 94, 0, 0.12) !important;
+        }
+
+        @media (max-width: 767.98px) {
+            .mobile-img-down {
+                object-position: center 25% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <!-- Left: Brand -->
+            <a href="index.html" class="brand-logo">
+                <i class="bi bi-bicycle text-gold me-2"></i>
+                Bikora
+            </a>
+            
+            <!-- Center: Menus -->
+            <nav class="nav-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="gallery.html" class="nav-link active">Gallery</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Right: Actions -->
+            <div class="nav-right">
+                <a href="dashboard.html" class="theme-toggle" title="Dashboard">
+                    <i class="bi bi-grid-fill"></i>
+                </a>
+                <button class="theme-toggle" title="Toggle Theme">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <button class="theme-toggle rtl-toggle-btn" title="RTL Toggle">
+                    <i class="bi bi-arrow-left-right"></i>
+                </button>
+                <div class="nav-separator"></div>
+                <a href="login.html" class="btn btn-primary btn-sm rounded-pill px-4">Login</a>
+            </div>
+
+            <button id="hamburger" class="hamburger">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div id="offcanvas-backdrop" class="offcanvas-backdrop"></div>
+    <div id="offcanvas-menu" class="offcanvas-menu">
+        <button id="offcanvas-close" class="offcanvas-close" aria-label="Close Menu">
+            <i class="bi bi-x"></i>
+        </button>
+        <a href="index.html" class="brand-logo mb-5"><i class="bi bi-bicycle text-gold me-2"></i> Bikora</a>
+        
+        <div class="offcanvas-links mb-5">
+            <a href="index.html" class="offcanvas-link">Home</a>
+            <a href="home-2.html" class="offcanvas-link">Home 2</a>
+            <a href="services.html" class="offcanvas-link">Services</a>
+            <a href="about.html" class="offcanvas-link">About</a>
+            <a href="gallery.html" class="offcanvas-link active">Gallery</a>
+            <a href="pricing.html" class="offcanvas-link">Pricing</a>
+            <a href="contact.html" class="offcanvas-link">Contact</a>
+        </div>
+
+        <div class="pt-4 border-top border-secondary border-opacity-10">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-nowrap">
+                <div class="d-flex gap-4 align-items-center flex-nowrap">
+                    <a href="dashboard.html" class="theme-toggle p-2" title="Dashboard"><i class="bi bi-grid-fill"></i></a>
+                    <button class="theme-toggle p-2" title="Toggle Theme"><i class="bi bi-moon-fill"></i></button>
+                    <button class="theme-toggle p-2 rtl-toggle-btn" title="RTL Toggle"><i class="bi bi-arrow-left-right"></i></button>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-primary w-100 rounded-pill py-3 fw-bold">Login</a>
+        </div>
+    </div>
+
+    <!-- Gallery Header -->
+    <section class="internal-hero" style="background-image: url('assets/images/Cycling Gallery — 20.jpg');">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="feature-badge-pill mb-3">VISUAL EXPERIENCE SHOWCASE</span>
+                <h1 class="display-1 text-white fw-bold">Capturing the Ride Spirit</h1>
+                <p class="mx-auto text-white-50 lead" style="max-width: 700px;">Explore high-octane snapshots from our bicycle fleet, guided tour loops, scenic coastal routes, and rider moments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Main Section -->
+    <section class="gallery-page">
+        <div class="container">
+
+            <!-- Filter Pills (Brand Colored) -->
+            <div class="d-flex justify-content-center gap-3 mb-5 flex-wrap filter-btn-group">
+                <button class="btn btn-filter active magnetic-btn" onclick="filterGallery('all', this)">All Rides</button>
+                <button class="btn btn-filter magnetic-btn" onclick="filterGallery('fleet', this)">Bicycle Fleet</button>
+                <button class="btn btn-filter magnetic-btn" onclick="filterGallery('tours', this)">Guided Tours</button>
+                <button class="btn btn-filter magnetic-btn" onclick="filterGallery('routes', this)">Scenic Routes</button>
+                <button class="btn btn-filter magnetic-btn" onclick="filterGallery('riders', this)">Happy Riders</button>
+            </div>
+
+            <!-- ACTION VIDEO REEL SECTION -->
+            <div class="mb-5 p-4 rounded-4 bg-dark text-white shadow-lg border border-secondary border-opacity-25">
+                <div class="text-center mb-4">
+                    <span class="feature-badge-pill mb-2">CINEMATIC RIDE REELS</span>
+                    <h3 class="fw-bold text-white mb-2" style="text-shadow: 0 2px 10px rgba(0,0,0,0.6);"><i class="bi bi-play-circle-fill text-gold me-2"></i> Experience the Ride in Motion</h3>
+                    <p class="text-white-50 small mb-0">View highlights from our fleet tuning, city group rides, and scenic waterfront routes.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="rounded-4 overflow-hidden shadow border border-secondary" style="height: 240px; position: relative;">
+                            <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                                <source src="assets/v/31480-387312377_medium.mp4" type="video/mp4">
+                            </video>
+                            <div class="position-absolute bottom-0 start-0 p-3 w-100" style="background: linear-gradient(0deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 70%, transparent 100%);">
+                                <span class="badge bg-gold text-white rounded-pill px-3 py-1 mb-1 fw-bold shadow-sm">Fleet Care</span>
+                                <h6 class="text-white fw-bold mb-0" style="text-shadow: 0 2px 6px rgba(0,0,0,0.9);">Precision Mechanical Tuning</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="rounded-4 overflow-hidden shadow border border-secondary" style="height: 240px; position: relative;">
+                            <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                                <source src="assets/v/39183-421020269_medium.mp4" type="video/mp4">
+                            </video>
+                            <div class="position-absolute bottom-0 start-0 p-3 w-100" style="background: linear-gradient(0deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 70%, transparent 100%);">
+                                <span class="badge bg-cyan text-dark rounded-pill px-3 py-1 mb-1 fw-bold shadow-sm">City Ride</span>
+                                <h6 class="text-white fw-bold mb-0" style="text-shadow: 0 2px 6px rgba(0,0,0,0.9);">Guided Urban Excursions</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="rounded-4 overflow-hidden shadow border border-secondary" style="height: 240px; position: relative;">
+                            <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                                <source src="assets/v/72564-543910238_medium.mp4" type="video/mp4">
+                            </video>
+                            <div class="position-absolute bottom-0 start-0 p-3 w-100" style="background: linear-gradient(0deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 70%, transparent 100%);">
+                                <span class="badge bg-warning text-dark rounded-pill px-3 py-1 mb-1 fw-bold shadow-sm">Waterfront Trail</span>
+                                <h6 class="text-white fw-bold mb-0" style="text-shadow: 0 2px 6px rgba(0,0,0,0.9);">Coastal Skyline Cruise</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Media Showcase Carousel (Redesigned Cards) -->
+            <div class="mb-5 p-4 rounded-4 shadow-sm" style="background: var(--card-bg);">
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                    <div>
+                        <h4 class="fw-bold mb-1 text-gold text-uppercase tracking-widest"><i class="bi bi-stars me-2"></i> Featured Ride Stories</h4>
+                        <small class="text-muted">Swipe or scroll horizontally to explore highlight reels</small>
+                    </div>
+                    <span class="badge bg-dark text-white rounded-pill px-3 py-2"><i class="bi bi-arrows-left-right me-1"></i> Drag / Scroll</span>
+                </div>
+                
+                <div class="horizontal-gallery-track">
+                    <!-- Showcase Card 1 -->
+                    <div class="showcase-card" onclick="openLightbox('assets/images/Bicycle Fleet — 12a.jpg', 'Hybrid Cruiser Fleet - Station Dock #1')">
+                        <img src="assets/images/Bicycle Fleet — 12a.jpg" class="showcase-img" alt="Fleet 1">
+                        <div class="showcase-overlay">
+                            <span class="badge rounded-pill px-3 py-2 align-self-start" style="background-color: #FF5E00; color: white;">#FLEET-DOCK-01</span>
+                            <div>
+                                <h5 class="text-white fw-bold mb-1">Hybrid Cruiser Fleet</h5>
+                                <p class="text-white-50 small mb-0"><i class="bi bi-geo-alt-fill me-1 text-gold"></i> Central Station Hub</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Showcase Card 2 -->
+                    <div class="showcase-card" onclick="openLightbox('assets/images/City Tour Destinations — 10c.jpg', 'Historic Old Town Guided Loop')">
+                        <img src="assets/images/City Tour Destinations — 10c.jpg" class="showcase-img" alt="Tour 1">
+                        <div class="showcase-overlay">
+                            <span class="badge bg-dark text-white rounded-pill px-3 py-2 align-self-start">GUIDED LOOP</span>
+                            <div>
+                                <h5 class="text-white fw-bold mb-1">Historic Old Town Loop</h5>
+                                <p class="text-white-50 small mb-0"><i class="bi bi-clock-history me-1 text-gold"></i> 3-Hour Guided Ride</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Showcase Card 3 -->
+                    <div class="showcase-card" onclick="openLightbox('assets/images/City Cycling — 10.jpg', 'Coastal Promenade Sunset Trail')">
+                        <img src="assets/images/City Cycling — 10.jpg" class="showcase-img" alt="Scenic 1">
+                        <div class="showcase-overlay">
+                            <span class="badge bg-info text-dark rounded-pill px-3 py-2 align-self-start">GOLDEN HOUR</span>
+                            <div>
+                                <h5 class="text-white fw-bold mb-1">Coastal Promenade Ride</h5>
+                                <p class="text-white-50 small mb-0"><i class="bi bi-sun-fill me-1 text-warning"></i> Sunset Trail (15 km)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Showcase Card 4 -->
+                    <div class="showcase-card" onclick="openLightbox('assets/images/Tour Guides — 10.jpg', 'Certified City Ride Captains')">
+                        <img src="assets/images/Tour Guides — 10.jpg" class="showcase-img" alt="Guides">
+                        <div class="showcase-overlay">
+                            <span class="badge bg-secondary text-white rounded-pill px-3 py-2 align-self-start">EXPERTS</span>
+                            <div>
+                                <h5 class="text-white fw-bold mb-1">Small Group Captains</h5>
+                                <p class="text-white-50 small mb-0"><i class="bi bi-patch-check-fill me-1 text-gold"></i> Certified Guides</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staggered 3-Column Grid Gallery -->
+            <div class="row g-4 mb-5" id="gallery-grid">
+                <div class="col-md-4 col-sm-6 gallery-box-item fleet">
+                    <div class="gallery-grid-card" onclick="openLightbox('assets/images/Bicycle Fleet — 12a.jpg', 'City Cruiser Fleet')">
+                        <img src="assets/images/Bicycle Fleet — 12a.jpg" class="gallery-grid-img" alt="City Cruiser Bikes">
+                        <div class="gallery-grid-overlay">
+                            <span class="badge align-self-start mb-2 rounded-pill px-3" style="background-color: #FF5E00; color: white;">Fleet</span>
+                            <h5 class="text-white fw-bold mb-1">City Cruiser Fleet</h5>
+                            <small class="text-white-50"><i class="bi bi-arrows-angle-expand me-1"></i> Expand Full Photo</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 gallery-box-item tours">
+                    <div class="gallery-grid-card" onclick="openLightbox('assets/images/City Tour Destinations — 10c.jpg', 'Historic City Tour')">
+                        <img src="assets/images/City Tour Destinations — 10c.jpg" class="gallery-grid-img" alt="Historic Tour">
+                        <div class="gallery-grid-overlay">
+                            <span class="badge bg-dark text-white align-self-start mb-2 rounded-pill px-3">Guided Tour</span>
+                            <h5 class="text-white fw-bold mb-1">Historic City Tour</h5>
+                            <small class="text-white-50"><i class="bi bi-arrows-angle-expand me-1"></i> Expand Full Photo</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 gallery-box-item routes">
+                    <div class="gallery-grid-card" onclick="openLightbox('assets/images/City Cycling — 10.jpg', 'Sunset Coastal Route')">
+                        <img src="assets/images/City Cycling — 10.jpg" class="gallery-grid-img" alt="Coastal Route">
+                        <div class="gallery-grid-overlay">
+                            <span class="badge bg-info text-dark align-self-start mb-2 rounded-pill px-3">Scenic Route</span>
+                            <h5 class="text-white fw-bold mb-1">Sunset Coastal Route</h5>
+                            <small class="text-white-50"><i class="bi bi-arrows-angle-expand me-1"></i> Expand Full Photo</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 gallery-box-item tours">
+                    <div class="gallery-grid-card" onclick="openLightbox('assets/images/Tour Guides — 10.jpg', 'Expert Tour Captains')">
+                        <img src="assets/images/Tour Guides — 10.jpg" class="gallery-grid-img" alt="Tour Captains">
+                        <div class="gallery-grid-overlay">
+                            <span class="badge bg-secondary text-white align-self-start mb-2 rounded-pill px-3">Captains</span>
+                            <h5 class="text-white fw-bold mb-1">Expert Tour Captains</h5>
+                            <small class="text-white-50"><i class="bi bi-arrows-angle-expand me-1"></i> Expand Full Photo</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 gallery-box-item routes">
+                    <div class="gallery-grid-card" onclick="openLightbox('assets/images/Cycling Gallery — 20.jpg', 'Iconic Bridge Crossing')">
+                        <img src="assets/images/Cycling Gallery — 20.jpg" class="gallery-grid-img" alt="Bridge Crossing">
+                        <div class="gallery-grid-overlay">
+                            <span class="badge bg-info text-dark align-self-start mb-2 rounded-pill px-3">Scenic Route</span>
+                            <h5 class="text-white fw-bold mb-1">Iconic Bridge Crossing</h5>
+                            <small class="text-white-50"><i class="bi bi-arrows-angle-expand me-1"></i> Expand Full Photo</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 gallery-box-item riders">
+                    <div class="gallery-grid-card" onclick="openLightbox('assets/images/Customers — 10.jpg', 'Happy Rider Moments')">
+                        <img src="assets/images/Customers — 10.jpg" class="gallery-grid-img" alt="Happy Riders">
+                        <div class="gallery-grid-overlay">
+                            <span class="badge bg-success text-white align-self-start mb-2 rounded-pill px-3">Happy Riders</span>
+                            <h5 class="text-white fw-bold mb-1">Group Tour Memories</h5>
+                            <small class="text-white-50"><i class="bi bi-arrows-angle-expand me-1"></i> Expand Full Photo</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW SECTION 1 (GALLERY): INSTAGRAM & TIKTOK RIDER PHOTO WALL -->
+            <div class="my-5 p-5 rounded-4 bg-dark text-white shadow-lg border border-secondary border-opacity-25">
+                <div class="text-center mb-5">
+                    <span class="feature-badge-pill mb-3">#BIKORARIDES SOCIAL REEL</span>
+                    <h2 class="display-5 fw-bold mb-3">Tag Us @BikoraRides to Get Featured</h2>
+                    <p class="text-white-50 fs-5">Rider moments shared by our global cycling community.</p>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <img src="assets/images/Cycling Gallerq.jpg" class="img-fluid rounded-4 shadow" alt="Social 1" style="height: 220px; width: 100%; object-fit: cover;" onclick="openLightbox('assets/images/Cycling Gallerq.jpg', 'Community Rider Shot #1')">
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <img src="assets/images/Cycling Gallery — 2.jpg" class="img-fluid rounded-4 shadow" alt="Social 2" style="height: 220px; width: 100%; object-fit: cover;" onclick="openLightbox('assets/images/Cycling Gallery — 2.jpg', 'Community Rider Shot #2')">
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <img src="assets/images/Testimonials — 6s.jpg" class="img-fluid rounded-4 shadow" alt="Social 3" style="height: 220px; width: 100%; object-fit: cover;" onclick="openLightbox('assets/images/Testimonials — 6s.jpg', 'Community Rider Shot #3')">
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <img src="assets/images/ws.jpg" class="img-fluid rounded-4 shadow" alt="Social 4" style="height: 220px; width: 100%; object-fit: cover;" onclick="openLightbox('assets/images/ws.jpg', 'Community Rider Shot #4')">
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <img src="assets/images/tv.jpg" class="img-fluid rounded-4 shadow" alt="Social 5" style="height: 220px; width: 100%; object-fit: cover;" onclick="openLightbox('assets/images/tv.jpg', 'Community Rider Shot #5')">
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <img src="assets/images/as.jpg" class="img-fluid rounded-4 shadow" alt="Social 6" style="height: 220px; width: 100%; object-fit: cover;" onclick="openLightbox('assets/images/as.jpg', 'Community Rider Shot #6')">
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW SECTION 2 (GALLERY): BEHIND THE SCENES FLEET CARE -->
+            <div class="my-5 p-4 rounded-4 border border-secondary border-opacity-25 bg-dark text-white">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                        <span class="feature-badge-pill mb-3">BEHIND THE SCENES</span>
+                        <h2 class="display-5 fw-bold mb-3">Mechanic Tuning & Fleet Sanitation</h2>
+                        <p class="text-white-50 fs-5 mb-4">Take a look inside our maintenance hangar where every bike is cleaned, gear-tuned, and safety-inspected after every ride.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <img src="assets/images/Bike Rental — 8qq.jpg" class="img-fluid rounded-4 shadow w-100 d-block" alt="Tuning 1" style="height: 220px; object-fit: cover;">
+                            </div>
+                            <div class="col-12">
+                                <img src="assets/images/Tour Guides — 10e.jpg" class="img-fluid rounded-4 shadow w-100 d-block mobile-img-down" alt="Tuning 2" style="height: 220px; object-fit: cover;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark border-0 rounded-4 overflow-hidden shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title text-white fw-bold" id="lightboxTitle">Image Title</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-3 text-center">
+                    <img id="lightboxImage" src="" class="img-fluid rounded-3 lightbox-modal-img" alt="Enlarged View">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6 text-center text-lg-start">
+                    <a href="index.html" class="brand-logo mb-4 text-white justify-content-center justify-content-lg-start">
+                        <i class="bi bi-bicycle text-gold me-2"></i> Bikora
+                    </a>
+                    <p class="text-muted">Premium bicycle rental & guided city tour service dedicated to fun, eco-friendly urban exploration.</p>
+                    <div class="d-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+                        <a href="#" class="footer-social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-link" title="Twitter X"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="footer-social-link" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="footer-social-link" title="Strava Club"><i class="bi bi-activity"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Rental Options</h5>
+                    <ul class="footer-links">
+                        <li><a href="services.html" class="footer-link">City Hybrid Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Electric E-Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Guided City Tours</a></li>
+                        <li><a href="services.html" class="footer-link">Self-Guided GPS Maps</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-muted">Subscribe for ride tips & discount tour promo codes.</p>
+                    <div class="input-group mt-4">
+                        <input type="text" class="form-control bg-transparent border-secondary text-white" placeholder="Email Address">
+                        <button class="btn btn-primary"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center">
+                <p class="text-muted mb-0">© 2026 Bikora Bicycle Rental & City Tours. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <div id="back-to-top" class="back-to-top">
+        <i class="bi bi-bicycle"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        function openLightbox(imgSrc, title) {
+            document.getElementById('lightboxImage').src = imgSrc;
+            document.getElementById('lightboxTitle').textContent = title;
+            const modal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+            modal.show();
+        }
+
+        function filterGallery(category, btnElement) {
+            const buttons = document.querySelectorAll('.filter-btn-group .btn-filter');
+            buttons.forEach(b => b.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+
+            const items = document.querySelectorAll('.gallery-box-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+

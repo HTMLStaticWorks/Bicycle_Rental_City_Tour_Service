@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing & Packages | Bikora Bicycle Rental & City Tours</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css?v=6">
+    <style>
+        .pricing-page { padding-top: 60px; padding-bottom: 100px; }
+        .pricing-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px 30px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 20px 40px rgba(255,94,0,0.15);
+        }
+        .pricing-card.featured {
+            border: 2px solid var(--primary-gold);
+            box-shadow: 0 15px 35px rgba(255,94,0,0.2);
+        }
+    </style>
+    <style>
+        /* Forced fix for hero section badge pill */
+        .hero-1 .feature-badge-pill, 
+        .hero-2 .feature-badge-pill, 
+        .internal-hero .feature-badge-pill,
+        .feature-badge-pill {
+            color: #FF5E00 !important;
+            background-color: rgba(255, 94, 0, 0.12) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <!-- Left: Brand -->
+            <a href="index.html" class="brand-logo">
+                <i class="bi bi-bicycle text-gold me-2"></i>
+                Bikora
+            </a>
+            
+            <!-- Center: Menus -->
+            <nav class="nav-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="pricing.html" class="nav-link active">Pricing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Right: Actions -->
+            <div class="nav-right">
+                <a href="dashboard.html" class="theme-toggle" title="Dashboard">
+                    <i class="bi bi-grid-fill"></i>
+                </a>
+                <button class="theme-toggle" title="Toggle Theme">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <button class="theme-toggle rtl-toggle-btn" title="RTL Toggle">
+                    <i class="bi bi-arrow-left-right"></i>
+                </button>
+                <div class="nav-separator"></div>
+                <a href="login.html" class="btn btn-primary btn-sm rounded-pill px-4">Login</a>
+            </div>
+
+            <button id="hamburger" class="hamburger">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div id="offcanvas-backdrop" class="offcanvas-backdrop"></div>
+    <div id="offcanvas-menu" class="offcanvas-menu">
+        <button id="offcanvas-close" class="offcanvas-close" aria-label="Close Menu">
+            <i class="bi bi-x"></i>
+        </button>
+        <a href="index.html" class="brand-logo mb-5"><i class="bi bi-bicycle text-gold me-2"></i> Bikora</a>
+        
+        <div class="offcanvas-links mb-5">
+            <a href="index.html" class="offcanvas-link">Home</a>
+            <a href="home-2.html" class="offcanvas-link">Home 2</a>
+            <a href="services.html" class="offcanvas-link">Services</a>
+            <a href="about.html" class="offcanvas-link">About</a>
+            <a href="gallery.html" class="offcanvas-link">Gallery</a>
+            <a href="pricing.html" class="offcanvas-link active">Pricing</a>
+            <a href="contact.html" class="offcanvas-link">Contact</a>
+        </div>
+
+        <div class="pt-4 border-top border-secondary border-opacity-10">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-nowrap">
+                <div class="d-flex gap-4 align-items-center flex-nowrap">
+                    <a href="dashboard.html" class="theme-toggle p-2" title="Dashboard"><i class="bi bi-grid-fill"></i></a>
+                    <button class="theme-toggle p-2" title="Toggle Theme"><i class="bi bi-moon-fill"></i></button>
+                    <button class="theme-toggle p-2 rtl-toggle-btn" title="RTL Toggle"><i class="bi bi-arrow-left-right"></i></button>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-primary w-100 rounded-pill py-3 fw-bold">Login</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <section class="internal-hero" style="background-image: url('assets/images/Bicycle Fleet — 12e.jpg');">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="feature-badge-pill mb-3">TRANSPARENT RATES — NO HIDDEN FEES</span>
+                <h1 class="display-1 text-white fw-bold mb-4">Rental Rates & Tour Packages</h1>
+                <p class="mx-auto fs-5 text-white-50 mb-5" style="max-width: 700px;">Flexible hourly, daily, and guided tour passes. All rentals include a free helmet, anti-theft lock & phone dock.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Content -->
+    <section class="pricing-page">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <!-- Hourly Flex -->
+                <div class="col-xl-3 col-md-6 animate-on-scroll">
+                    <div class="pricing-card text-center h-100 d-flex flex-column">
+                        <h4 class="fw-bold mb-2">Hourly Flex</h4>
+                        <p class="text-muted small mb-4">Short city trips & coffee runs</p>
+                        <h2 class="display-4 fw-bold text-gold mb-3">$12 <span class="fs-6 text-muted">/ hour</span></h2>
+                        <ul class="list-unstyled text-center mb-4 small text-muted">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> City Hybrid 7-Speed Bike</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Free Helmet & Anti-Theft Lock</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Handlebar Phone Dock</li>
+                        </ul>
+                        <a href="dashboard.html" class="btn btn-outline-primary rounded-pill px-4 py-2 mt-auto align-self-center">Rent Hourly</a>
+                    </div>
+                </div>
+
+                <!-- Half-Day Pass -->
+                <div class="col-xl-3 col-md-6 animate-on-scroll" style="transition-delay: 0.15s;">
+                    <div class="pricing-card text-center h-100 d-flex flex-column">
+                        <h4 class="fw-bold mb-2">Half-Day Pass</h4>
+                        <p class="text-muted small mb-4">4 Hours of exploration</p>
+                        <h2 class="display-4 fw-bold text-gold mb-3">$35 <span class="fs-6 text-muted">/ 4 hrs</span></h2>
+                        <ul class="list-unstyled text-center mb-4 small text-muted">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Choice of Hybrid or Cruiser</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Turn-by-Turn Audio GPS App</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Free Roadside Battery Swap</li>
+                        </ul>
+                        <a href="dashboard.html" class="btn btn-outline-primary rounded-pill px-4 py-2 mt-auto align-self-center">Get 4-Hour Pass</a>
+                    </div>
+                </div>
+
+                <!-- Full-Day Pass (Featured) -->
+                <div class="col-xl-3 col-md-6 animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="pricing-card featured text-center h-100 d-flex flex-column">
+                        <span class="badge bg-gold text-white rounded-pill px-3 py-1 mb-3 align-self-center">MOST POPULAR</span>
+                        <h4 class="fw-bold mb-2">Full-Day Unlimited</h4>
+                        <p class="text-muted small mb-4">24 Hours complete freedom</p>
+                        <h2 class="display-4 fw-bold text-gold mb-3">$55 <span class="fs-6 text-muted">/ day</span></h2>
+                        <ul class="list-unstyled text-center mb-4 small text-muted">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Choice of E-Bike or Road Bike</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Unlimited GPS Route Passes</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Free Overnight Hotel Parking Lock</li>
+                        </ul>
+                        <a href="dashboard.html" class="btn btn-primary rounded-pill px-4 py-2 mt-auto align-self-center">Book Day Pass</a>
+                    </div>
+                </div>
+
+                <!-- Guided Tour Pass -->
+                <div class="col-xl-3 col-md-6 animate-on-scroll" style="transition-delay: 0.45s;">
+                    <div class="pricing-card text-center h-100 d-flex flex-column">
+                        <h4 class="fw-bold mb-2">Guided Tour Pass</h4>
+                        <p class="text-muted small mb-4">3-Hour Captain Led Tour</p>
+                        <h2 class="display-4 fw-bold text-gold mb-3">$75 <span class="fs-6 text-muted">/ rider</span></h2>
+                        <ul class="list-unstyled text-center mb-4 small text-muted">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Premium E-Bike Included</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Certified Tour Captain Guide</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i> Refreshments & Snacks Stop</li>
+                        </ul>
+                        <a href="dashboard.html" class="btn btn-outline-primary rounded-pill px-4 py-2 mt-auto align-self-center">Book Tour Slot</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW SECTION 1 (PRICING): SEASONAL PASS BUNDLES -->
+            <div class="my-5 p-5 rounded-4 bg-dark text-white shadow-lg border border-secondary border-opacity-25">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <span class="feature-badge-pill mb-3">SEASONAL SPECIAL</span>
+                        <h2 class="display-5 fw-bold mb-3">Summer Ride Pass Bundles</h2>
+                        <p class="text-white-50 fs-5 mb-4">Planning a week-long city trip or summer vacation? Enjoy up to 30% savings with multi-day passes.</p>
+                        
+                        <div class="d-flex flex-column gap-3">
+                            <div class="p-3 rounded-3 bg-secondary bg-opacity-25 border border-secondary d-flex justify-content-between align-items-start gap-3">
+                                <div>
+                                    <h6 class="fw-bold text-gold mb-0">3-Day Explorer Pass</h6>
+                                    <small class="text-white-50">Unlimited 72-hour access to any bike</small>
+                                </div>
+                                <span class="fw-bold text-white fs-4 mt-n1">$120</span>
+                            </div>
+                            <div class="p-3 rounded-3 bg-secondary bg-opacity-25 border border-secondary d-flex justify-content-between align-items-start gap-3">
+                                <div>
+                                    <h6 class="fw-bold text-cyan mb-0">7-Day Weekly Pass</h6>
+                                    <small class="text-white-50">7 full days riding + 1 guided tour free</small>
+                                </div>
+                                <span class="fw-bold text-white fs-4 mt-n1">$220</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="assets/images/Adventureaw.jpg" class="img-fluid rounded-4 shadow" alt="Seasonal Pass" style="width: 100%; height: 340px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW SECTION 2 (PRICING): CORPORATE GROUP & TEAM BUILDING PACKAGES -->
+            <div class="my-5 p-4 rounded-4 border border-secondary border-opacity-25 bg-dark text-white">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                        <img src="assets/images/tourists ,.jpg" class="img-fluid rounded-4 shadow" alt="Corporate Groups" style="width: 100%; height: 280px; object-fit: cover;">
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="feature-badge-pill mb-3">GROUP DISCOUNTS</span>
+                        <h2 class="display-5 fw-bold mb-3">Corporate & Family Group Rates</h2>
+                        <p class="text-white-50 fs-5 mb-4">Riding in a group of 6 or more? Get 20% off all bike rentals and private tour bookings.</p>
+                        <a href="contact.html" class="btn btn-primary rounded-pill px-4 py-2 fw-bold">Request Group Rate</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Cost Calculator -->
+            <div class="mt-5 p-4 rounded-4 shadow-sm" style="background: var(--card-bg);">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold">Interactive Rental Cost Estimator</h3>
+                    <p class="text-muted">Slide to estimate your custom rental price</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 text-center">
+                        <label class="form-label fw-bold">Duration: <span id="hours-display" class="text-gold">4 Hours</span></label>
+                        <input type="range" class="form-range" min="1" max="24" value="4" id="hours-range" oninput="document.getElementById('hours-display').textContent = this.value + ' Hours'; document.getElementById('calc-price').textContent = '$' + (this.value * 10);">
+                        <h2 class="display-4 fw-bold mt-3 text-gold" id="calc-price">$40</h2>
+                        <a href="dashboard.html" class="btn btn-primary rounded-pill px-5 mt-3 fw-bold">Book Estimated Price</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6 text-center text-lg-start">
+                    <a href="index.html" class="brand-logo mb-4 text-white justify-content-center justify-content-lg-start">
+                        <i class="bi bi-bicycle text-gold me-2"></i> Bikora
+                    </a>
+                    <p class="text-muted">Premium bicycle rental & guided city tour service dedicated to fun, eco-friendly urban exploration.</p>
+                    <div class="d-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+                        <a href="#" class="footer-social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-link" title="Twitter X"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="footer-social-link" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="footer-social-link" title="Strava Club"><i class="bi bi-activity"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Rental Options</h5>
+                    <ul class="footer-links">
+                        <li><a href="services.html" class="footer-link">City Hybrid Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Electric E-Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Guided City Tours</a></li>
+                        <li><a href="services.html" class="footer-link">Self-Guided GPS Maps</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-muted">Subscribe for ride tips & discount tour promo codes.</p>
+                    <div class="input-group mt-4">
+                        <input type="text" class="form-control bg-transparent border-secondary text-white" placeholder="Email Address">
+                        <button class="btn btn-primary"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center">
+                <p class="text-muted mb-0">© 2026 Bikora Bicycle Rental & City Tours. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <div id="back-to-top" class="back-to-top">
+        <i class="bi bi-bicycle"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

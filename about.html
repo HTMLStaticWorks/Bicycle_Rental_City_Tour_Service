@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Bikora Bicycle Rental & City Tours</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css?v=6">
+    <style>
+        .about-page {
+            padding-top: 60px;
+            padding-bottom: 100px;
+        }
+
+        .team-card {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 94, 0, 0.15);
+        }
+    </style>
+    <style>
+        /* Forced fix for hero section badge pill */
+        .hero-1 .feature-badge-pill,
+        .hero-2 .feature-badge-pill,
+        .internal-hero .feature-badge-pill,
+        .feature-badge-pill {
+            color: #FF5E00 !important;
+            background-color: rgba(255, 94, 0, 0.12) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <!-- Left: Brand -->
+            <a href="index.html" class="brand-logo">
+                <i class="bi bi-bicycle text-gold me-2"></i>
+                Bikora
+            </a>
+
+            <!-- Center: Menus -->
+            <nav class="nav-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Right: Actions -->
+            <div class="nav-right">
+                <a href="dashboard.html" class="theme-toggle" title="Dashboard">
+                    <i class="bi bi-grid-fill"></i>
+                </a>
+                <button class="theme-toggle" title="Toggle Theme">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <button class="theme-toggle rtl-toggle-btn" title="RTL Toggle">
+                    <i class="bi bi-arrow-left-right"></i>
+                </button>
+                <div class="nav-separator"></div>
+                <a href="login.html" class="btn btn-primary btn-sm rounded-pill px-4">Login</a>
+            </div>
+
+            <button id="hamburger" class="hamburger">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div id="offcanvas-backdrop" class="offcanvas-backdrop"></div>
+    <div id="offcanvas-menu" class="offcanvas-menu">
+        <button id="offcanvas-close" class="offcanvas-close" aria-label="Close Menu">
+            <i class="bi bi-x"></i>
+        </button>
+        <a href="index.html" class="brand-logo mb-5"><i class="bi bi-bicycle text-gold me-2"></i> Bikora</a>
+
+        <div class="offcanvas-links mb-5">
+            <a href="index.html" class="offcanvas-link">Home</a>
+            <a href="home-2.html" class="offcanvas-link">Home 2</a>
+            <a href="services.html" class="offcanvas-link">Services</a>
+            <a href="about.html" class="offcanvas-link active">About</a>
+            <a href="gallery.html" class="offcanvas-link">Gallery</a>
+            <a href="pricing.html" class="offcanvas-link">Pricing</a>
+            <a href="contact.html" class="offcanvas-link">Contact</a>
+        </div>
+
+        <div class="pt-4 border-top border-secondary border-opacity-10">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-nowrap">
+                <div class="d-flex gap-4 align-items-center flex-nowrap">
+                    <a href="dashboard.html" class="theme-toggle p-2" title="Dashboard"><i
+                            class="bi bi-grid-fill"></i></a>
+                    <button class="theme-toggle p-2" title="Toggle Theme"><i class="bi bi-moon-fill"></i></button>
+                    <button class="theme-toggle p-2 rtl-toggle-btn" title="RTL Toggle"><i
+                            class="bi bi-arrow-left-right"></i></button>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-primary w-100 rounded-pill py-3 fw-bold">Login</a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="internal-hero" style="background-image: url('assets/images/City Tour Destinations — 10q.jpg');">
+        <div class="container py-4 text-center">
+            <span class="feature-badge-pill mb-3">URBAN MOBILITY PIONEERS — EST. 2026</span>
+            <h1 class="display-1 text-white fw-bold mb-3">Our Mission </h1>
+            <p class="text-white-50 mx-auto mb-4 lead" style="max-width: 700px;">Driven by a passion for green urban
+                transit, Bikora connects riders with top-quality bicycles, guided tour routes, and unforgettable city
+                sight-seeing experiences.</p>
+        </div>
+    </section>
+
+    <main class="about-page">
+        <div class="container py-5">
+            <!-- Mission Row -->
+            <div class="row align-items-center mb-5 pb-5">
+                <div class="col-lg-6 animate-on-scroll text-center text-lg-start">
+                    <span class="feature-badge-pill mb-3">ZERO-EMISSION REVOLUTION</span>
+                    <h1 class="display-3 fw-bold mb-4">Empowering Urban Exploration on Pedal Power.</h1>
+                    <p class="lead text-muted fs-4 mb-4">We believe the best way to fall in love with a city is on two
+                        wheels. Zero traffic hassle, zero emissions, and pure joy.</p>
+
+                    <div class="row g-3 text-center align-items-stretch mb-4 mb-lg-0">
+                        <div class="col-6">
+                            <div class="p-3 rounded-4 bg-dark text-white border border-secondary h-100 d-flex flex-column align-items-center justify-content-center"
+                                style="min-height: 110px;">
+                                <h3 class="fw-bold text-gold mb-0">100,000+</h3>
+                                <small class="text-white-50">Kilometers Ridden</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 rounded-4 bg-dark text-white border border-secondary h-100 d-flex flex-column align-items-center justify-content-center"
+                                style="min-height: 110px;">
+                                <h3 class="fw-bold text-cyan mb-0">12.5 Tons</h3>
+                                <small class="text-white-50">CO2 Emissions Saved</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate-on-scroll mt-4 mt-lg-0">
+                    <img src="assets/images/Bicycle Fleet — 12a.jpg" class="img-fluid rounded-4 shadow-lg"
+                        alt="About us bicycle fleet" style="width: 100%; height: 420px; object-fit: cover;">
+                </div>
+            </div>
+
+            <!-- NEW SECTION 1 (ABOUT): SUSTAINABLE URBAN FUTURE CHARTER -->
+            <div class="my-5 p-5 rounded-4 bg-dark text-white shadow-lg border border-secondary border-opacity-25">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <img src="assets/images/Adventurea,..jpg" class="img-fluid rounded-4 shadow"
+                            alt="Sustainability" style="width: 100%; height: 340px; object-fit: cover;">
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="feature-badge-pill mb-3">OUR GREEN CHARTER</span>
+                        <h2 class="display-5 fw-bold mb-3">100% Carbon-Neutral City Transit</h2>
+                        <p class="text-white-50 fs-5 mb-4">Our entire rental operations, electric charging stations, and
+                            maintenance vans run on 100% renewable solar energy.</p>
+
+                        <div class="d-flex flex-column gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-tree-fill text-success fs-3"></i>
+                                <div>
+                                    <h6 class="fw-bold mb-0">1 Tree Planted Per 50 km Ridden</h6>
+                                    <small class="text-white-50">Partnered with local urban reforestation
+                                        programs.</small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-sun-fill text-warning fs-3"></i>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Solar Charging Hubs</h6>
+                                    <small class="text-white-50">E-Bike batteries charged cleanly via rooftop solar
+                                        arrays.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founders & Captains -->
+            <div class="text-center mb-5 mt-5">
+                <span class="feature-badge-pill mb-3">MEET OUR CAPTAINS</span>
+                <h2 class="display-5 fw-bold mb-4">Pioneers of the Pedal</h2>
+            </div>
+
+            <div class="row g-4 justify-content-center align-items-stretch mb-5">
+                <div class="col-md-6 col-lg-5">
+                    <div class="team-card p-4 shadow-sm text-center h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <img src="assets/images/Tour Guides — 1.jpg" class="rounded-4 mb-4" alt="Alex Rivera"
+                                style="width: 100%; height: 280px; object-fit: cover; object-position: center top; margin-top: 15px;">
+                            <h4 class="fw-bold mb-1">Alex Rivera</h4>
+                            <p class="text-gold fw-bold small mb-3">Co-Founder & Lead Mechanical Engineer</p>
+                        </div>
+                        <p class="text-muted small mb-0">Passionate about bicycle craftsmanship and eco-urban transit.
+                            Alex oversees our fleet precision tuning and smart GPS lock integrations.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="team-card p-4 shadow-sm text-center h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <img src="assets/images/Tour Guides — 10.jpg" class="rounded-4 mb-4" alt="Elena Vance"
+                                style="width: 100%; height: 280px; object-fit: cover;">
+                            <h4 class="fw-bold mb-1">Elena Vance</h4>
+                            <p class="text-gold fw-bold small mb-3">Co-Founder & Chief Tour Director</p>
+                        </div>
+                        <p class="text-muted small mb-0">City historian and veteran ride captain. Elena curates our
+                            scenic coastal loops, foodie safaris, and sunset harbor tour itineraries.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW SECTION 2 (ABOUT): MECHANIC WORKSHOPS & COMMUNITY CLASSES -->
+            <div class="my-5 p-4 rounded-4 border border-secondary border-opacity-25 bg-dark text-white">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                        <span class="feature-badge-pill mb-3">COMMUNITY OUTREACH</span>
+                        <h2 class="display-5 fw-bold mb-3">Free Bike Maintenance Workshops</h2>
+                        <p class="text-white-50 fs-5 mb-4">Every month we host free community mechanical tune-up
+                            clinics. Learn how to fix flat tires, adjust Shimano gears, and oil chains from our master
+                            mechanics.</p>
+                        <a href="contact.html" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold">Sign Up for
+                            Next Class</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="assets/images/Tour Guides — 10wq.jpg" class="img-fluid rounded-4 shadow"
+                            alt="Mechanic Workshop" style="width: 100%; height: 280px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SVG Route Motion Trail -->
+            <div class="my-5 text-center p-5 rounded-4 shadow-sm" style="background: var(--card-bg);">
+                <h4 class="fw-bold text-uppercase text-gold tracking-widest mb-3"><i class="bi bi-geo-alt me-2"></i> OUR
+                    EXPANDING RIDE NETWORK</h4>
+                <p class="text-muted mb-4">Connecting 3 major urban stations with over 150 km of bike lanes.</p>
+                <svg width="100%" height="100" viewBox="0 0 600 100" fill="none">
+                    <path d="M10 50 C 150 10, 300 90, 450 20 T 590 50" stroke="var(--primary-gold)" stroke-width="4"
+                        stroke-linecap="round" class="svg-route-path" />
+                    <circle cx="10" cy="50" r="8" fill="var(--primary-gold)" />
+                    <circle cx="280" cy="65" r="8" fill="var(--primary-cyan)" />
+                    <circle cx="590" cy="50" r="8" fill="var(--primary-gold)" />
+                </svg>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6 text-center text-lg-start">
+                    <a href="index.html"
+                        class="brand-logo mb-4 text-white justify-content-center justify-content-lg-start">
+                        <i class="bi bi-bicycle text-gold me-2"></i> Bikora
+                    </a>
+                    <p class="text-muted">Premium bicycle rental & guided city tour service dedicated to fun,
+                        eco-friendly urban exploration.</p>
+                    <div class="d-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+                        <a href="#" class="footer-social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-link" title="Twitter X"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="footer-social-link" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="footer-social-link" title="Strava Club"><i class="bi bi-activity"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Rental Options</h5>
+                    <ul class="footer-links">
+                        <li><a href="services.html" class="footer-link">City Hybrid Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Electric E-Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Guided City Tours</a></li>
+                        <li><a href="services.html" class="footer-link">Self-Guided GPS Maps</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-muted">Subscribe for ride tips & discount tour promo codes.</p>
+                    <div class="input-group mt-4">
+                        <input type="text" class="form-control bg-transparent border-secondary text-white"
+                            placeholder="Email Address">
+                        <button class="btn btn-primary"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center">
+                <p class="text-muted mb-0">© 2026 Bikora Bicycle Rental & City Tours. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <div id="back-to-top" class="back-to-top">
+        <i class="bi bi-bicycle"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

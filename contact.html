@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Bikora Bicycle Rental & City Tours</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css?v=6">
+    <style>
+        .contact-page { padding-top: 60px; padding-bottom: 100px; }
+        .contact-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 36px;
+            height: 100%;
+        }
+    </style>
+    <style>
+        /* Forced fix for hero section badge pill */
+        .hero-1 .feature-badge-pill, 
+        .hero-2 .feature-badge-pill, 
+        .internal-hero .feature-badge-pill,
+        .feature-badge-pill {
+            color: #FF5E00 !important;
+            background-color: rgba(255, 94, 0, 0.12) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <!-- Left: Brand -->
+            <a href="index.html" class="brand-logo">
+                <i class="bi bi-bicycle text-gold me-2"></i>
+                Bikora
+            </a>
+            
+            <!-- Center: Menus -->
+            <nav class="nav-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </nav>
+
+            <!-- Right: Actions -->
+            <div class="nav-right">
+                <a href="dashboard.html" class="theme-toggle" title="Dashboard">
+                    <i class="bi bi-grid-fill"></i>
+                </a>
+                <button class="theme-toggle" title="Toggle Theme">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <button class="theme-toggle rtl-toggle-btn" title="RTL Toggle">
+                    <i class="bi bi-arrow-left-right"></i>
+                </button>
+                <div class="nav-separator"></div>
+                <a href="login.html" class="btn btn-primary btn-sm rounded-pill px-4">Login</a>
+            </div>
+
+            <button id="hamburger" class="hamburger">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div id="offcanvas-backdrop" class="offcanvas-backdrop"></div>
+    <div id="offcanvas-menu" class="offcanvas-menu">
+        <button id="offcanvas-close" class="offcanvas-close" aria-label="Close Menu">
+            <i class="bi bi-x"></i>
+        </button>
+        <a href="index.html" class="brand-logo mb-5"><i class="bi bi-bicycle text-gold me-2"></i> Bikora</a>
+        
+        <div class="offcanvas-links mb-5">
+            <a href="index.html" class="offcanvas-link">Home</a>
+            <a href="home-2.html" class="offcanvas-link">Home 2</a>
+            <a href="services.html" class="offcanvas-link">Services</a>
+            <a href="about.html" class="offcanvas-link">About</a>
+            <a href="gallery.html" class="offcanvas-link">Gallery</a>
+            <a href="pricing.html" class="offcanvas-link">Pricing</a>
+            <a href="contact.html" class="offcanvas-link active">Contact</a>
+        </div>
+
+        <div class="pt-4 border-top border-secondary border-opacity-10">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-nowrap">
+                <div class="d-flex gap-4 align-items-center flex-nowrap">
+                    <a href="dashboard.html" class="theme-toggle p-2" title="Dashboard"><i class="bi bi-grid-fill"></i></a>
+                    <button class="theme-toggle p-2" title="Toggle Theme"><i class="bi bi-moon-fill"></i></button>
+                    <button class="theme-toggle p-2 rtl-toggle-btn" title="RTL Toggle"><i class="bi bi-arrow-left-right"></i></button>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-primary w-100 rounded-pill py-3 fw-bold">Login</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <section class="internal-hero" style="background-image: url('assets/images/City Tour Destinations — 10q.jpg');">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="feature-badge-pill mb-3">GET IN TOUCH WITH OUR CAPTAINS</span>
+                <h1 class="display-1 text-white fw-bold mb-4">Contact & Location Hubs</h1>
+                <p class="mx-auto fs-5 text-white-50 mb-5" style="max-width: 700px;">Have a question about bike rentals, tour schedules, or corporate group packages? We are here to help!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section class="contact-page">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-5 animate-on-scroll">
+                    <div class="contact-card">
+                        <span class="feature-badge-pill mb-3">RENTAL HUB INFO</span>
+                        <h3 class="fw-bold mb-4">Station HQ & Hours</h3>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="bi bi-geo-alt-fill fs-4 text-gold me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Central Station Hub</h6>
+                                <p class="text-muted small mb-0">124 Metro Boulevard, Suite 10, Downtown</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="bi bi-clock-fill fs-4 text-gold me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Operating Hours</h6>
+                                <p class="text-muted small mb-0">Monday - Sunday: 7:00 AM - 9:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="bi bi-telephone-fill fs-4 text-gold me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Phone & Support</h6>
+                                <p class="text-muted small mb-0">+1 (800) 555-BIKORA</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="bi bi-envelope-fill fs-4 text-gold me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Email Enquiry</h6>
+                                <p class="text-muted small mb-0">support@bikorarides.com</p>
+                            </div>
+                        </div>
+
+                        <!-- SOCIAL MEDIA CONNECT BLOCK (CONTACT CARD) -->
+                        <hr class="my-4 border-secondary border-opacity-25">
+                        <div>
+                            <h6 class="fw-bold mb-3 text-gold"><i class="bi bi-share-fill me-2"></i> Connect on Social Media</h6>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <a href="#" class="footer-social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="footer-social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" class="footer-social-link" title="Twitter X"><i class="bi bi-twitter-x"></i></a>
+                                <a href="#" class="footer-social-link" title="YouTube"><i class="bi bi-youtube"></i></a>
+                                <a href="#" class="footer-social-link" title="WhatsApp Support"><i class="bi bi-whatsapp text-success"></i></a>
+                                <a href="#" class="footer-social-link" title="Strava Club"><i class="bi bi-activity text-warning"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 animate-on-scroll" style="transition-delay: 0.15s;">
+                    <div class="contact-card">
+                        <span class="feature-badge-pill mb-3">SEND A MESSAGE</span>
+                        <h3 class="fw-bold mb-4">Booking & Rider Support</h3>
+                        <form onsubmit="event.preventDefault(); alert('Thank you! Your enquiry has been received. Our team will contact you shortly.');">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Full Name</label>
+                                    <input type="text" class="form-control bg-transparent border-secondary" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Email Address</label>
+                                    <input type="email" class="form-control bg-transparent border-secondary" placeholder="john@example.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Inquiry Type</label>
+                                    <select class="form-select bg-transparent border-secondary" style="cursor: pointer;">
+                                        <option>Bike Rental Booking</option>
+                                        <option>Guided City Tour</option>
+                                        <option>Corporate Group Pass</option>
+                                        <option>Roadside Assistance</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Estimated Date</label>
+                                    <input type="date" class="form-control bg-transparent border-secondary" value="2026-08-15">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold">Message Details</label>
+                                    <textarea class="form-control bg-transparent border-secondary" rows="4" placeholder="How can we help your cycling adventure?"></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary rounded-pill w-100 py-3 fw-bold magnetic-btn">Send Enquiry</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- NEW SECTION 1 (CONTACT): STATION LOCATOR & PICKUP MAP HUB -->
+            <div class="my-5 p-5 rounded-4 bg-dark text-white shadow-lg border border-secondary border-opacity-25">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <span class="feature-badge-pill mb-3">3 CITY HUB LOCATIONS</span>
+                        <h2 class="display-5 fw-bold mb-3">Find Your Nearest Station Hub</h2>
+                        <p class="text-white-50 fs-5 mb-4">Pick up your bike at Station #1 and drop it off at Station #3 at no extra fee.</p>
+                        
+                        <div class="d-flex flex-column gap-3">
+                            <div class="p-3 rounded-3 bg-secondary bg-opacity-25 border border-secondary">
+                                <h6 class="fw-bold text-gold mb-1"><i class="bi bi-geo-alt-fill me-2"></i> Hub #1 - Metro Central Station</h6>
+                                <small class="text-white-50">Direct subway connection. 50 hybrid bikes available.</small>
+                            </div>
+                            <div class="p-3 rounded-3 bg-secondary bg-opacity-25 border border-secondary">
+                                <h6 class="fw-bold text-cyan mb-1"><i class="bi bi-geo-alt-fill me-2"></i> Hub #2 - Ocean Promenade Pier 4</h6>
+                                <small class="text-white-50">Waterfront bike path access. 35 e-bikes available.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="rounded-4 overflow-hidden shadow border border-secondary" style="height: 340px; width: 100%;">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153166!3d-37.81627977975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sFlinders%20Street%20Railway%20Station!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
+                                width="100%" height="340" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW SECTION 2 (CONTACT): EMERGENCY ROADSIDE SUPPORT GUARANTEE -->
+            <div class="my-5 p-4 rounded-4 border border-secondary border-opacity-25 bg-dark text-white">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                        <img src="assets/images/Bike Rental — 8cc.jpg" class="img-fluid rounded-4 shadow" alt="Roadside Van Support" style="width: 100%; height: 260px; object-fit: cover;">
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="feature-badge-pill mb-3">24/7 RIDER ASSISTANCE</span>
+                        <h2 class="display-5 fw-bold mb-3">Free Roadside Repair & Replacement</h2>
+                        <p class="text-white-50 fs-5 mb-4">Flat tire or battery drain? Call our emergency support hotline and our mobile support van will swap your bike within 15 minutes anywhere in the city.</p>
+                        <h4 class="text-gold fw-bold"><i class="bi bi-telephone-outbound-fill me-2"></i> +1 (800) 555-BIKORA</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6 text-center text-lg-start">
+                    <a href="index.html" class="brand-logo mb-4 text-white justify-content-center justify-content-lg-start">
+                        <i class="bi bi-bicycle text-gold me-2"></i> Bikora
+                    </a>
+                    <p class="text-muted">Premium bicycle rental & guided city tour service dedicated to fun, eco-friendly urban exploration.</p>
+                    <div class="d-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+                        <a href="#" class="footer-social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-link" title="Twitter X"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="footer-social-link" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="footer-social-link" title="Strava Club"><i class="bi bi-activity"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Rental Options</h5>
+                    <ul class="footer-links">
+                        <li><a href="services.html" class="footer-link">City Hybrid Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Electric E-Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Guided City Tours</a></li>
+                        <li><a href="services.html" class="footer-link">Self-Guided GPS Maps</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-muted">Subscribe for ride tips & discount tour promo codes.</p>
+                    <div class="input-group mt-4">
+                        <input type="text" class="form-control bg-transparent border-secondary text-white" placeholder="Email Address">
+                        <button class="btn btn-primary"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center">
+                <p class="text-muted mb-0">© 2026 Bikora Bicycle Rental & City Tours. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <div id="back-to-top" class="back-to-top">
+        <i class="bi bi-bicycle"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

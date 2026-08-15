@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bikora | Bicycle Rental & City Tour Service</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <meta name="description"
+        content="Bikora - Premium bicycle rentals, e-bikes, and guided city tours. Explore top urban routes with zero-emission pedal power.">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css?v=5">
+    <style>
+        .hero-1 {
+            background-color: #0F172A !important;
+            background-image: url('assets/images/Adventure.jpg') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+            padding-bottom: 80px;
+            overflow: hidden;
+            color: #FFFFFF !important;
+        }
+
+        .hero-1 .container {
+            width: 100% !important;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 20px !important;
+        }
+
+        .hero-tech-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(var(--primary-gold) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            opacity: 0.15;
+            z-index: 2;
+        }
+
+        .mission-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00FF88;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00FF88;
+            animation: pulse-green 2s infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(3.2rem, 6.5vw, 5.2rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <!-- Left: Brand -->
+            <a href="index.html" class="brand-logo">
+                <i class="bi bi-bicycle text-gold me-2"></i>
+                Bikora
+            </a>
+
+            <!-- Center: Menus -->
+            <nav class="nav-center">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Right: Actions -->
+            <div class="nav-right">
+                <a href="dashboard.html" class="theme-toggle" title="Rental Dashboard">
+                    <i class="bi bi-grid-fill"></i>
+                </a>
+                <button class="theme-toggle" title="Toggle Theme">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <button class="theme-toggle rtl-toggle-btn" title="RTL Toggle">
+                    <i class="bi bi-arrow-left-right"></i>
+                </button>
+                <div class="nav-separator"></div>
+                <a href="login.html" class="btn btn-primary btn-sm rounded-pill px-4">Login</a>
+            </div>
+
+            <!-- Hamburger -->
+            <button id="hamburger" class="hamburger">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div id="offcanvas-backdrop" class="offcanvas-backdrop"></div>
+    <div id="offcanvas-menu" class="offcanvas-menu">
+        <button id="offcanvas-close" class="offcanvas-close" aria-label="Close Menu">
+            <i class="bi bi-x"></i>
+        </button>
+        <a href="index.html" class="brand-logo mb-5"><i class="bi bi-bicycle text-gold me-2"></i> Bikora</a>
+
+        <div class="offcanvas-links mb-5">
+            <a href="index.html" class="offcanvas-link active">Home</a>
+            <a href="home-2.html" class="offcanvas-link">Home 2</a>
+            <a href="services.html" class="offcanvas-link">Services</a>
+            <a href="about.html" class="offcanvas-link">About</a>
+            <a href="gallery.html" class="offcanvas-link">Gallery</a>
+            <a href="pricing.html" class="offcanvas-link">Pricing</a>
+            <a href="contact.html" class="offcanvas-link">Contact</a>
+        </div>
+
+        <div class="pt-4 border-top border-secondary border-opacity-10">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-nowrap">
+                <div class="d-flex gap-4 align-items-center flex-nowrap">
+                    <a href="dashboard.html" class="theme-toggle p-2" title="Dashboard"><i
+                            class="bi bi-grid-fill"></i></a>
+                    <button class="theme-toggle p-2" title="Toggle Theme"><i class="bi bi-moon-fill"></i></button>
+                    <button class="theme-toggle p-2 rtl-toggle-btn" title="RTL Toggle"><i
+                            class="bi bi-arrow-left-right"></i></button>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-primary w-100 rounded-pill py-3 fw-bold">Login</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero hero-1">
+        <div class="hero-tech-layer"></div>
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(15,23,42,0.75) 0%, rgba(15,23,42,0.9) 100%); z-index: 1;">
+        </div>
+
+        <div class="container position-relative" style="z-index: 10;">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <div class="mission-status-pill mb-4 mx-auto">
+                        <span class="status-dot"></span>
+                        <span class="status-text text-uppercase tracking-widest text-white">⚡ 2026 FLEET ONLINE: 120+
+                            CITY BIKES & E-BIKES ACTIVE</span>
+                    </div>
+
+                    <h1 class="hero-title text-white text-center mb-4 mx-auto"
+                        style="text-shadow: 0 10px 30px rgba(0,0,0,0.6); max-width: 950px;">
+                        Ride the City <span class="text-gradient-gold">on Two Wheels</span>.
+                    </h1>
+                    <p class="lead mb-5 fs-4 mx-auto text-center text-white-50"
+                        style="max-width: 820px; font-weight: 400; line-height: 1.6;">
+                        Instant city bicycle rentals, high-speed electric bikes, and immersive guided tours. Ride
+                        further, discover hidden gems, and experience zero-emission freedom.
+                    </p>
+
+                    <!-- Hero Quick Booking Widget -->
+                    <div class="hero-quick-widget mx-auto mb-5 text-start" style="max-width: 960px;">
+                        <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';"
+                            class="row g-3 align-items-center">
+                            <div class="col-md-3">
+                                <label class="text-white-50 small fw-bold text-uppercase d-block mb-1">Bike Type</label>
+                                <select class="form-select bg-white text-dark border-0 shadow-sm py-2">
+                                    <option>City Hybrid ($12/hr)</option>
+                                    <option>Electric E-Bike ($20/hr)</option>
+                                    <option>Road Bike Pro ($18/hr)</option>
+                                    <option>Beach Cruiser ($15/hr)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="text-white-50 small fw-bold text-uppercase d-block mb-1">Duration</label>
+                                <select class="form-select bg-white text-dark border-0 shadow-sm py-2">
+                                    <option>1 Hour</option>
+                                    <option selected>Half-Day (4 Hours)</option>
+                                    <option>Full-Day Pass</option>
+                                    <option>3-Day Pass</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="text-white-50 small fw-bold text-uppercase d-block mb-1">Ride Date</label>
+                                <input type="date" class="form-control bg-white text-dark border-0 shadow-sm py-2"
+                                    value="2026-08-15">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="text-white-50 small fw-bold text-uppercase d-block mb-1">&nbsp;</label>
+                                <button type="submit"
+                                    class="btn btn-primary w-100 py-2 fw-bold rounded-pill magnetic-btn">Check
+                                    Availability</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Key Stats Ribbon -->
+                    <div class="d-flex justify-content-center gap-4 flex-wrap text-white">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-star-fill text-gold fs-5"></i>
+                            <span class="fw-bold">4.9/5 Rating (2,400+ Reviews)</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-shield-check text-gold fs-5"></i>
+                            <span class="fw-bold">Free Helmet & Lock Kit</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-geo-alt-fill text-gold fs-5"></i>
+                            <span class="fw-bold">3 Pickup Hubs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="py-5" id="services">
+        <div class="container py-5">
+            <div class="text-center mb-5 animate-on-scroll">
+                <span class="feature-badge-pill mb-3">OUR FLEET & TOURS</span>
+                <h2 class="display-5 fw-bold mb-4">Premium City Mobility Solutions</h2>
+                <div class="mt-3 mx-auto" style="width: 60px; height: 3px; background: var(--primary-gold);"></div>
+            </div>
+
+            <div class="row g-4 mt-4">
+                <div class="col-md-4 animate-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="card h-100 border-0 p-4 shadow-sm text-center glass-card interactive-hover-glow">
+                        <div class="position-relative">
+                            <img src="assets/images/Bike Rental — 8.jpg"
+                                class="service-img-thumb mb-4 d-block mx-auto rounded-4" alt="City & E-Bike Rentals"
+                                style="height: 220px; width: 100%; object-fit: cover;">
+                            <span
+                                class="position-absolute top-0 end-0 m-3 badge bg-primary-gold text-white rounded-pill px-3 py-2">From
+                                $12/hr</span>
+                        </div>
+                        <h3 class="fw-bold">City & E-Bike Rentals</h3>
+                        <p class="text-muted mb-4">High-performance hybrid bikes, city cruisers, and pedal-assist
+                            electric bikes equipped with phone mounts and GPS navigation.</p>
+                        <ul class="list-unstyled mb-4 small text-muted text-center d-inline-block text-start">
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i> Free Helmet & Anti-Theft
+                                Lock</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i> 50 km E-Bike Battery
+                                Range</li>
+                        </ul>
+                        <div class="w-100 text-center mt-auto pt-2">
+                            <a href="services.html"
+                                class="btn btn-primary rounded-pill px-4 py-2 text-white text-decoration-none fw-bold fs-6 mx-auto">View
+                                Rental Options <i class="bi bi-arrow-right me-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="card h-100 border-0 p-4 shadow-sm text-center glass-card interactive-hover-glow">
+                        <div class="position-relative">
+                            <img src="assets/images/City Tour Destinations — 10c.jpg"
+                                class="service-img-thumb mb-4 d-block mx-auto rounded-4" alt="Guided City Tours"
+                                style="height: 220px; width: 100%; object-fit: cover;">
+                            <span
+                                class="position-absolute top-0 end-0 m-3 badge bg-dark text-white rounded-pill px-3 py-2">Daily
+                                Departure</span>
+                        </div>
+                        <h3 class="fw-bold">Guided City Tours</h3>
+                        <p class="text-muted mb-4">Led by expert local cycling guides exploring historic landmarks,
+                            coastal parks & hidden culinary spots with live audio headsets.</p>
+                        <ul class="list-unstyled mb-4 small text-muted text-center d-inline-block text-start">
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i> Small Groups (Max 10
+                                Riders)</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i> Snacks & Refreshment
+                                Stop</li>
+                        </ul>
+                        <div class="w-100 text-center mt-auto pt-2">
+                            <a href="services.html"
+                                class="btn btn-primary rounded-pill px-4 py-2 text-white text-decoration-none fw-bold fs-6 mx-auto">Explore
+                                Tour <i class="bi bi-arrow-right me-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="card h-100 border-0 p-4 shadow-sm text-center glass-card interactive-hover-glow">
+                        <div class="position-relative">
+                            <img src="assets/images/City Cycling — 10.jpg"
+                                class="service-img-thumb mb-4 d-block mx-auto rounded-4" alt="Self-Guided GPS Routes"
+                                style="height: 220px; width: 100%; object-fit: cover;">
+                            <span
+                                class="position-absolute top-0 end-0 m-3 badge bg-info text-dark rounded-pill px-3 py-2">App
+                                Audio Pass</span>
+                        </div>
+                        <h3 class="fw-bold">Self-Guided GPS Routes</h3>
+                        <p class="text-muted mb-4">Curated interactive GPS ride routes tailored for sightseeing, sunset
+                            cruises, or food adventures at your own pace.</p>
+                        <ul class="list-unstyled mb-4 small text-muted text-center d-inline-block text-start">
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i> Turn-by-Turn Audio
+                                Guidance</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i> Offline Route Access
+                            </li>
+                        </ul>
+                        <div class="w-100 text-center mt-auto pt-2">
+                            <a href="services.html"
+                                class="btn btn-primary rounded-pill px-4 py-2 text-white text-decoration-none fw-bold fs-6 mx-auto">Discover
+                                Ride Loops <i class="bi bi-arrow-right me-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION 1 (HOME 1): RIDER SAFETY & GEAR HUB -->
+    <section class="py-5 bg-dark text-white border-top border-bottom border-secondary border-opacity-25">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="feature-badge-pill mb-3">COMPLETE SAFETY GEAR INCLUDED</span>
+                    <h2 class="display-5 fw-bold mb-4">Ride Safe with Premium Helmet & Lock Kits</h2>
+                    <p class="fs-5 text-white-50 mb-4">Your safety is our top priority. Every Bikora rental includes a
+                        sanitized high-grade ventilated helmet, heavy-duty anti-theft U-lock, and phone dock at no extra
+                        charge.</p>
+
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="p-3 rounded-4 bg-secondary bg-opacity-25 border border-secondary">
+                                <h5 class="fw-bold text-gold mb-1"><i class="bi bi-shield-lock-fill me-2"></i> Heavy
+                                    U-Lock</h5>
+                                <p class="small text-white-50 mb-0">Dual-key hardened steel lock included with every
+                                    bike.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-3 rounded-4 bg-secondary bg-opacity-25 border border-secondary">
+                                <h5 class="fw-bold text-cyan mb-1"><i class="bi bi-phone-fill me-2"></i> Phone Holder
+                                </h5>
+                                <p class="small text-white-50 mb-0">Universal handlebar mount for turn-by-turn
+                                    navigation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6">
+                            <img src="assets/images/Bicycle Fleet — 12dd.jpg" class="img-fluid rounded-4 shadow"
+                                alt="Safety Kit 1" style="height: 240px; width: 100%; object-fit: contain; background: #ffffff; padding: 8px;">
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <img src="assets/images/Bike Rental — 8c.jpg" class="img-fluid rounded-4 shadow"
+                                alt="Safety Kit 2" style="height: 240px; width: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Ride With Us -->
+    <section class="py-5 section-theme-alt">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0 animate-on-scroll text-center text-lg-start">
+                    <div class="w-100 d-flex justify-content-center justify-content-lg-start mb-3">
+                        <span class="feature-badge-pill mb-0">URBAN FREEDOM & SAFETY</span>
+                    </div>
+                    <h2 class="display-5 fw-bold mb-4">Why Ride With Bikora</h2>
+                    <p class="fs-5 opacity-75 mb-4">We make urban cycling effortless. Flexible hourly or full-day
+                        rentals, integrated helmet & safety kits, and 24/7 roadside rider assistance.</p>
+                    <div class="w-100 d-flex justify-content-center justify-content-lg-start">
+                        <ul class="list-unstyled d-inline-flex flex-column text-start rtl-list-align mb-0">
+                            <li class="mb-3 d-flex align-items-center"><i
+                                    class="bi bi-check-circle-fill text-gold me-3 fs-5"></i> Zero-Emission Urban Mobility
+                            </li>
+                            <li class="mb-3 d-flex align-items-center"><i
+                                    class="bi bi-check-circle-fill text-gold me-3 fs-5"></i> Smart Phone Mount & Voice GPS
+                                Audio Routes</li>
+                            <li class="mb-3 d-flex align-items-center"><i
+                                    class="bi bi-check-circle-fill text-gold me-3 fs-5"></i> Free High-Grade Helmet &
+                                Anti-Theft Lock</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="position-relative p-2 p-md-4 rounded-4" style="background: rgba(15, 23, 42, 0.05);">
+                        <img src="assets/images/Bicycle Fleet — 12a.jpg" class="img-fluid rounded-4 shadow-lg"
+                            alt="Bicycle Fleet" style="width: 100%; height: 380px; object-fit: cover;">
+                        <div class="position-absolute bottom-0 end-0 p-3 m-3 bg-white text-dark rounded-3 shadow">
+                            <span class="d-block fw-bold fs-2 text-gold">45,000+</span>
+                            <small class="text-muted fw-bold">Happy Riders Served</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION 2 (HOME 1): POPULAR CITY LANDMARKS & PHOTO HOTSPOTS -->
+    <section class="py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="feature-badge-pill mb-3">MUST-SEE DESTINATIONS</span>
+                <h2 class="display-5 fw-bold mb-3">Popular City Landmarks by Bike</h2>
+                <p class="text-muted fs-5 mx-auto" style="max-width: 700px;">Explore top scenic photo spots easily
+                    accessible via dedicated bike lanes.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 rounded-4 overflow-hidden shadow-sm h-100 bg-dark text-white">
+                        <img src="assets/images/City Tour Destinations — 10q.jpg" alt="Landmark 1"
+                            style="height: 220px; object-fit: cover;">
+                        <div class="card-body p-4">
+                            <span class="badge bg-gold text-white rounded-pill px-3 py-1 mb-2">15 Min Ride</span>
+                            <h5 class="fw-bold">Historic Waterfront Pier</h5>
+                            <p class="text-white-50 small mb-0">Panoramic ocean harbor views, seafood cafes, and wide
+                                car-free boardwalk paths.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card border-0 rounded-4 overflow-hidden shadow-sm h-100 bg-dark text-white">
+                        <img src="assets/images/Cycling Gallery — 20pp.jpg" alt="Landmark 2"
+                            style="height: 220px; object-fit: cover;">
+                        <div class="card-body p-4">
+                            <span class="badge bg-cyan text-dark rounded-pill px-3 py-1 mb-2">20 Min Ride</span>
+                            <h5 class="fw-bold">Grand Arch Suspension Bridge</h5>
+                            <p class="text-white-50 small mb-0">Iconic architectural skyline landmark with protected
+                                bi-directional bike lanes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card border-0 rounded-4 overflow-hidden shadow-sm h-100 bg-dark text-white">
+                        <img src="assets/images/sc.jpg" alt="Landmark 3" style="height: 220px; object-fit: cover;">
+                        <div class="card-body p-4">
+                            <span class="badge bg-warning text-dark rounded-pill px-3 py-1 mb-2">10 Min Ride</span>
+                            <h5 class="fw-bold">Old Botanical Gardens</h5>
+                            <p class="text-white-50 small mb-0">Lush green canopy trails, fountain plazas, and relaxing
+                                shaded rest stops.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: THE COASTAL SKYLINE LOOP -->
+    <section class="coastal-route-module py-5 border-bottom border-secondary border-opacity-25 animate-on-scroll">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <span class="feature-badge-pill mb-3">FEATURED SCENIC ROUTE</span>
+                    <h2 class="display-5 fw-bold mb-4">The Coastal Skyline Loop</h2>
+                    <p class="fs-5 text-muted mb-4">A breathtaking 15km waterfront ride past historic lighthouses,
+                        coastal parks, and bustling urban harbors. Perfect for morning cruises or golden hour
+                        photography.</p>
+
+                    <div
+                        class="d-flex gap-3 mb-4 flex-wrap justify-content-center justify-content-lg-start text-muted small">
+                        <span class="badge bg-dark text-white p-2 px-3"><i
+                                class="bi bi-signpost-split text-gold me-1"></i> Distance: 15 km</span>
+                        <span class="badge bg-dark text-white p-2 px-3"><i class="bi bi-clock text-gold me-1"></i>
+                            Duration: 1.5 hrs</span>
+                        <span class="badge bg-dark text-white p-2 px-3"><i
+                                class="bi bi-graph-up-arrow text-gold me-1"></i> Flat & Easy</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <svg width="100%" height="80" viewBox="0 0 400 80" fill="none">
+                            <path d="M10 40 Q 100 10, 200 50 T 390 40" stroke="var(--primary-gold)" stroke-width="4"
+                                stroke-linecap="round" class="svg-route-path" />
+                            <circle cx="10" cy="40" r="6" fill="var(--primary-gold)" />
+                            <circle cx="200" cy="50" r="6" fill="var(--primary-cyan)" />
+                            <circle cx="390" cy="40" r="6" fill="var(--primary-gold)" />
+                        </svg>
+                    </div>
+
+                    <div class="d-flex gap-4 justify-content-center justify-content-lg-start">
+                        <a href="about.html" class="btn btn-primary rounded-pill px-5 magnetic-btn">View Route
+                            Details</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="route-image-wrap">
+                        <img src="assets/images/City Tour Destinations — 10q.jpg" class="img-fluid rounded-4 shadow-lg"
+                            alt="Coastal Bike Route" style="width: 100%; height: 380px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION 3 (HOME 1): VERIFIED RIDER REVIEWS REEL -->
+    <section class="py-5 section-theme-alt border-top border-bottom border-secondary border-opacity-10">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="feature-badge-pill mb-3">RIDER REVIEWS</span>
+                <h2 class="display-5 fw-bold mb-3">Loved by 45,000+ City Explorers</h2>
+                <p class="text-muted fs-5">Read real experiences from riders who explored with Bikora.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div
+                        class="p-4 rounded-4 bg-dark text-white border border-secondary shadow-sm h-100 d-flex flex-column">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="assets/images/Testimonials — 6c.jpg" class="rounded-circle me-3" alt="Rider 1"
+                                style="width: 54px; height: 54px; object-fit: cover;">
+                            <div>
+                                <h6 class="fw-bold mb-0">Sarah Jenkins</h6>
+                                <div class="text-warning small"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-white-50 small mb-0">"The E-Bikes are top quality! We conquered the coastal
+                            skyline loop with zero effort. The GPS app guidance was super easy to follow."</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div
+                        class="p-4 rounded-4 bg-dark text-white border border-secondary shadow-sm h-100 d-flex flex-column">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="assets/images/Testimonials — 6dd.jpg" class="rounded-circle me-3" alt="Rider 2"
+                                style="width: 54px; height: 54px; object-fit: cover;">
+                            <div>
+                                <h6 class="fw-bold mb-0">Marcus Vance</h6>
+                                <div class="text-warning small"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-white-50 small mb-0">"Our guided tour captain was amazing! Uncovered secret
+                            alleys and food markets we would never have found on our own."</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div
+                        class="p-4 rounded-4 bg-dark text-white border border-secondary shadow-sm h-100 d-flex flex-column">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="assets/images/Testimonials — 6ee.jpg" class="rounded-circle me-3" alt="Rider 3"
+                                style="width: 54px; height: 54px; object-fit: cover;">
+                            <div>
+                                <h6 class="fw-bold mb-0">David & Claire</h6>
+                                <div class="text-warning small"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-white-50 small mb-0">"Quick 60-second pickup at Central Station. Helmets and
+                            heavy locks were included free. Best city rental service hands down!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEDICATED CINEMATIC VIDEO SHOWCASE SECTION -->
+    <section
+        class="py-5 bg-dark text-white border-top border-bottom border-secondary border-opacity-25 position-relative">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="feature-badge-pill mb-3"><i class="bi bi-camera-reels-fill text-gold me-2"></i> CINEMATIC
+                    FLEET SHOWCASE</span>
+                <h2 class="display-4 fw-bold text-white mb-3">Behind the Ride: Precision Engineering</h2>
+                <p class="text-white-50 fs-5 mx-auto" style="max-width: 750px;">See how our master mechanics inspect
+                    hydraulic disc brakes, tune Shimano 18-speed drivetrain gears, and charge high-capacity e-bike
+                    batteries before every journey.</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="position-relative rounded-4 overflow-hidden shadow-lg border border-secondary border-opacity-50"
+                        style="min-height: 480px; background: #000;">
+                        <!-- Autoplay MP4 Video -->
+                        <video autoplay loop muted playsinline
+                            style="width: 100%; height: 100%; min-height: 480px; object-fit: cover;"
+                            poster="assets/images/Bicycle Fleet — 12d.jpg">
+                            <source src="assets/v/31480-387312377_medium.mp4" type="video/mp4">
+                        </video>
+
+                        <!-- Dark Overlay & Floating Badges -->
+                        <div class="position-absolute bottom-0 start-0 w-100 p-4 p-md-5"
+                            style="background: linear-gradient(0deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.4) 70%, transparent 100%);">
+                            <div class="row align-items-center g-4 text-center text-md-start">
+                                <div class="col-md-8">
+                                    <div class="d-flex gap-2 mb-3 flex-wrap justify-content-center justify-content-md-start">
+                                        <span class="badge bg-gold text-white rounded-pill px-3 py-2"><i
+                                                class="bi bi-shield-check me-1"></i> Multi-Point Safety
+                                            Inspection</span>
+                                        <span class="badge bg-cyan text-dark rounded-pill px-3 py-2"><i
+                                                class="bi bi-lightning-charge-fill me-1"></i> Solar Battery
+                                            Charging</span>
+                                    </div>
+                                    <h3 class="fw-bold text-white mb-2">Zero-Defect Mechanical Guarantee</h3>
+                                    <p class="text-white-50 mb-0 small">Every Bikora rental bike passes a 24-point
+                                        mechanical safety checklist before handing over the keys.</p>
+                                </div>
+                                <div class="col-md-4 text-center text-md-end">
+                                    <a href="services.html"
+                                        class="btn btn-primary rounded-pill px-4 py-3 fw-bold magnetic-btn">View Fleet
+                                        Specs <i class="bi bi-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="future-ethos"
+        style="background-image: url('assets/images/Adventure.jpg'); background-size: cover; background-position: center;">
+        <div class="future-overlay"></div>
+        <div class="future-content container">
+            <h2 class="future-title-reveal text-white">THE RIDE AHEAD</h2>
+            <p class="fs-4 opacity-75 mb-5 mx-auto text-white" style="max-width: 800px;">Transforming urban mobility
+                with fun, healthy, and eco-friendly bicycle rentals. Lock in your bike in under 60 seconds and start
+                exploring today.</p>
+            <div class="d-flex justify-content-center gap-4">
+                <a href="dashboard.html"
+                    class="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-bold magnetic-btn">Reserve Your Bike</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6 text-center text-lg-start">
+                    <a href="index.html"
+                        class="brand-logo mb-4 text-white justify-content-center justify-content-lg-start">
+                        <i class="bi bi-bicycle text-gold me-2"></i> Bikora
+                    </a>
+                    <p class="text-muted">Premium bicycle rental & guided city tour service dedicated to fun,
+                        eco-friendly urban exploration.</p>
+                    <div class="d-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+                        <a href="#" class="footer-social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-link" title="Twitter X"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h5 class="footer-title">Rental Options</h5>
+                    <ul class="footer-links">
+                        <li><a href="services.html" class="footer-link">City Hybrid Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Electric E-Bikes</a></li>
+                        <li><a href="services.html" class="footer-link">Guided City Tours</a></li>
+                        <li><a href="services.html" class="footer-link">Self-Guided GPS Maps</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-muted">Subscribe for ride tips & discount tour promo codes.</p>
+                    <div class="input-group mt-4">
+                        <input type="text" class="form-control bg-transparent border-secondary text-white"
+                            placeholder="Email Address">
+                        <button class="btn btn-primary"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center">
+                <p class="text-muted mb-0">© 2026 Bikora Bicycle Rental & City Tours. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <div id="back-to-top" class="back-to-top">
+        <i class="bi bi-bicycle"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
