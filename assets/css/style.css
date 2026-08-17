@@ -102,6 +102,10 @@ footer p {
     background-color: var(--primary-gold) !important;
 }
 
+.bg-cyan {
+    background-color: var(--primary-cyan) !important;
+}
+
 /* Enforce crisp white text on intentionally dark sections in both light & dark mode */
 .bg-dark, .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6,
 .hero-1, .hero-1 h1, .hero-1 h2, .hero-1 h3, .hero-1 h4, .hero-1 h5, .hero-1 h6,
@@ -2996,20 +3000,20 @@ html.lenis, html.lenis body {
 
 /* 7. NAVIGATION & HEADER */
 [dir="rtl"] header .header-container {
-    flex-direction: row !important;
+    flex-direction: row-reverse !important;
 }
 
 [dir="rtl"] nav.nav-center {
-    flex-direction: row !important;
+    flex-direction: row-reverse !important;
 }
 
 [dir="rtl"] nav.nav-center a {
-    margin-right: 0 !important;
-    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
+    margin-left: 0 !important;
 }
 
 [dir="rtl"] .nav-right {
-    flex-direction: row !important;
+    flex-direction: row-reverse !important;
     gap: 1rem;
 }
 
@@ -3173,6 +3177,7 @@ div.feature-badge-pill,
 .internal-hero .feature-badge-pill,
 .bg-dark .feature-badge-pill {
     background-color: rgba(255, 94, 0, 0.12) !important;
+    border: 1px solid rgba(255, 94, 0, 0.25) !important;
     color: var(--primary-gold) !important;
     display: inline-flex !important;
     align-items: center !important;
@@ -3190,7 +3195,16 @@ div.feature-badge-pill,
     .internal-hero .feature-badge-pill,
     .bg-dark .feature-badge-pill {
         background-color: rgba(255, 94, 0, 0.12) !important;
+    border: 1px solid rgba(255, 94, 0, 0.25) !important;
         color: var(--primary-gold) !important;
     }
 }
 /* End of stylesheet */
+
+
+[dir="rtl"] .future-ethos p {
+    text-align: right !important;
+}
+[dir="rtl"] .future-ethos .d-flex.justify-content-center {
+    justify-content: flex-start !important;
+}

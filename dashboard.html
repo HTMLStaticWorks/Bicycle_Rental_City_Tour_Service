@@ -181,6 +181,12 @@
             left: 0 !important;
             width: calc(100% - 280px) !important;
         }
+        
+        /* Fix RTL navbar alignment bug caused by LTR Bootstrap's ms-auto */
+        [dir="rtl"] .dashboard-header .ms-auto {
+            margin-right: auto !important;
+            margin-left: 0 !important;
+        }
         @media (max-width: 1024px) {
             [dir="rtl"] .dashboard-sidebar {
                 transform: translateX(100%) !important;

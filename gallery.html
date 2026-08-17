@@ -19,10 +19,11 @@
 
         /* Redesigned Horizontal Showcase Track */
         .horizontal-gallery-track {
-            white-space: nowrap;
+            display: flex;
+            gap: 24px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            padding: 10px 5px 30px 5px;
+            padding: 20px 10px 40px 10px;
             -webkit-overflow-scrolling: touch;
         }
 
@@ -35,13 +36,11 @@
         }
 
         .showcase-card {
-            display: inline-block;
-            vertical-align: top;
-            white-space: normal;
-            width: 340px;
-            max-width: 85vw;
+            flex: 0 0 auto;
+            width: 320px;
+            max-width: 100%;
             height: 420px;
-            scroll-snap-align: start;
+            scroll-snap-align: center;
             border-radius: 28px;
             overflow: hidden;
             position: relative;
@@ -50,12 +49,6 @@
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
             isolation: isolate;
             transform: translateZ(0);
-            -webkit-mask-image: -webkit-radial-gradient(white, black);
-            margin-right: 24px;
-        }
-
-        .showcase-card:last-child {
-            margin-right: 0;
         }
 
         .showcase-card:hover {
@@ -173,6 +166,17 @@
         }
 
         @media (max-width: 767.98px) {
+            .showcase-card {
+                width: 85% !important;
+                height: 240px !important;
+            }
+            .showcase-img {
+                object-fit: cover !important;
+            }
+            .showcase-card:hover .showcase-img, 
+            .showcase-card:active .showcase-img {
+                transform: scale(1) !important;
+            }
             .mobile-img-down {
                 object-position: center 25% !important;
             }
@@ -324,7 +328,7 @@
             </div>
 
             <!-- Horizontal Media Showcase Carousel (Redesigned Cards) -->
-            <div class="mb-5 p-4 rounded-4 shadow-sm" style="background: var(--card-bg);">
+            <div class="mb-5 p-md-4 p-3 rounded-4 shadow-sm" style="background: var(--card-bg);">
                 <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
                     <div>
                         <h4 class="fw-bold mb-1 text-gold text-uppercase tracking-widest"><i class="bi bi-stars me-2"></i> Featured Ride Stories</h4>
